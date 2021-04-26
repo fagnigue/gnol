@@ -1,0 +1,96 @@
+{% extends "products/vin.html.twig" %}
+
+{% block other_link %}
+
+{{ encore_entry_link_tags('products') }}
+
+{% endblock %}
+
+{% block header %}
+{{ parent() }}
+{% endblock %}
+
+
+{% block body %}
+    
+
+
+
+
+<div class="container-fluid body">
+
+   <div class="row title-row-spiritueux justify-content-lg-center justify-content-md-center justify-content-sm-center justify-content-center">
+        <div class="col-lg-3 col-md-3 col-sm-7 col-10">
+            <div class="title_div">
+               <fieldset class="border fieldset-title">
+                    <legend class="w-auto">
+                        Nos
+                    </legend>
+                    <label>Spiritueux</label>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <div class="row content-row justify-content-around pt-5">
+        <div class="col-lg-2 col-md-2 d-lg-block d-md-block d-sm-none d-none">
+            <div class="categorie_spiritueux">
+                <div class="transparence">
+
+
+                    {% block categorie_content %}
+                        <h1>Catégories</h1>
+                        <p>Japonais</p>
+                        <p>Ecossais</p>
+                        <p>Anglais</p>
+                        <p>Autres</p>
+                    {% endblock %}
+
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-8 col-md-8 col-sm-11 col-11">
+
+            <div class="row">
+
+
+                    {% for i in 1..6 %}
+
+                        {% block list_product %}
+
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-3">
+                    
+                            <div class="card product_div">
+                                <img src="{{ asset('images/spiritueux_.png') }}" class="card-img-top product_img">
+                                <div class="card-body">
+                                    <label class="card-title">Jack</label>
+                                    <p class="prix">1300$</p>
+                                    <a href="/products/spiritueux/categorie/description/jack" class="stretched-link"></a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        {% endblock %}
+
+                    {% endfor %}
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
+
+{% block footer %}
+{{ parent() }}
+{% endblock %}

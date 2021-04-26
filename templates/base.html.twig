@@ -1,97 +1,146 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <!-- BOOTSTRAP CSS -->
+        <!--BOOTSTRAP CSS
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
-        <!-- BOOTSTRAP JS -->
+         BOOTSTRAP JS
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
 
-        <!-- STYLE CSS -->
+         STYLE CSS 
         {# the CSS file lives at "publiccss/base.css" #}
         <link href="{{ asset('css/base.css') }}" rel="stylesheet"/>
+        -->
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script src="https://unpkg.com/feather-icons"></script>
+
+         {{ encore_entry_link_tags('app') }}
+
+         {% block other_link %} {% endblock %}
     </head>
     <body>
-        <header>
+        
         {% block header %}
-            <div class="nav">
+            <header>
 
-                <div class="container-fluid">
-                    <div class="row justify-content-start">
-
-                        <div class="col-1">
-                        dhfjd
-                        </div>
-                        <div class="col-10">
-                            <div col="row">
-                                <div class="col">
-                                
-                                    <nav>
-                                        <ul>
-                                            <li>
-                                                <div class="dropdown">
-                                                    <a class="dropbtn">Nos Produits</a>
-                                                    <div class="dropdown-content">
-                                                        <a href="#">Vin</a>
-                                                        <a href="#">Spiritueux</a>
-                                                        <a href="#">Champagne</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li><a href="#">Nos accessoires</a></li>
-                                            <li><a href="#">Nous contacter</a></li>
-                                            <li><a href="#">Les soldes</a></li>
-                                            <li><a href="#">logo</a></li>
-                                            <li><a href="#">Profil</a></li>
-                                            <li><a href="#">Panier</a></li>
-                                        </ul>
-                                    </nav>
-
-                                </div>
-                            </div>
-                            <div col="row">
-                                <div class="col">
-                                <input type="search" placeholder="Recherche" class="search_bar">
-                                </div>
-                            </div>
-                        </div>
-
+                <div class="nav-div">
+		
+                    <input type="checkbox" id="nav-check">
+                    <div class="nav-header">
+                        <div class="nav-title">
+                            <a href="/"><img src="{{ asset('images/logo-gnol.svg') }}" style="width: 100px; height: 100px;"></a>
+                        </div>	
                     </div>
+                    
+                    <div class="nav-btn">
+
+                        <label for="nav-check">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </label>
+                        
+                    </div>
+
+                    <div class="nav-links">
+                        <div class="dropdown">
+                            <a class="dropbtn">Nos Produits</a>
+                            <div class="dropdown-content">
+                                <a href="/products/vin">Vin</a>
+                                <a href="/products/spiritueux">Spiritueux</a>
+                                <a href="/products/champagne">Champagne</a>
+                            </div>
+                        </div>
+
+                        <a href="/products/accessoires" class="ml-lg-0 ml-md-0 ml-sm-3 ml-3">Nos accessoires</a>
+                        <a href="#" class="ml-lg-0 ml-md-0 ml-sm-3 ml-3">Nous contacter</a>
+                        <a href="#" class="ml-lg-0 ml-md-0 ml-sm-3 ml-3">Les soldes</a>
+                        <a href="/profil"  class="i-user ml-lg-0 ml-md-0 ml-sm-3 ml-3"><i data-feather="user"></i></a>
+                        <a href="/panier" class="i-cart ml-lg-0 ml-md-0 ml-sm-3 ml-3"><i data-feather="shopping-cart"></i></a>
+                        <input type="search" class="ml-lg-0 ml-md-0 ml-sm-3 ml-3" style="font-family: FontAwesome;" placeholder="&#xf002; Recherche...">
+                    </div>
+
                 </div>
-
-            </div>
+            
+            </header>
+            
         {% endblock %}
-        </header>
+        
 
-        {% block body %}{% endblock %}
+            {% block body %}{% endblock %}
+
         <footer>
         {% block footer %}
             <div class="container-fluid">
-
-                <div class="row justify-content-around">
-                    <div class="col-6">
+                <div class="row justify-content-around footer-row1">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <p class="footer-p1">
                             Nous vous offrons le meilleur alcool du monde
-                            pour vos moment de plaisir.
+                            pour vos moments de plaisir.
                         </p>
                     </div>
-                    <div class="col-3">
+                    <div class="col-lg-2 col-md-3 col-sm-12 col-12 nl-div">
                         <label class="footer-l1">Abonnez vous à notre Newsletter</label>
                         <button class="ad-em">
                             Adresse Email
                         </button>
+                        <label class="footer-l2">inscrivez vous à nos dernières nouvelles et articles</label>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div></div>
+                    <div class="container-fluid footer-container">
+                        <div class="row justify-content-around footer-row2">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                <p class="footer-row2-title">Où nous sommes</p>
+                                <p>Côte D'ivoire</p>
+                                <p>France</p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-12">
+                                <p class="footer-row2-title">Produits</p>
+                                <p>Champagne</p>
+                                <p>Vin</p>
+                                <p>Spiritueux</p>
+                                <p>Bière</p>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-12 col-12">
+                                <ul class="footer-info">
+                                    <li>Gnol@gnolentreprise.com</li>
+                                    <li>+225 0748763369</li>
+                                    <li>+33 355498725</li>
+                                    <li>Angré, Abidjan</li>
+                                    <li>Suivez nous</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row justify-content-around">
+                            <div class="col-3">
+                            <label>Développer avec <i data-feather="heart"></i> par AKIL</label>
+                            </div>
+                            <div class="col-3 version">
+                            <label>GNOL-2021 V.2554</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+              
 
             </div>
         {% endblock %}
         </footer>
     </body>
+    {{ encore_entry_script_tags('app') }}
+
+    <script>
+      feather.replace()
+    </script>
 </html>

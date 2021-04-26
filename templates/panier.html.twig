@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block other_link %}
+
+{{ encore_entry_link_tags('panier') }}
+
+{% endblock %}
+
+{% block header %}
+{{ parent() }}
+{% endblock %}
+
+
+{% block body %}
+    
+
+
+
+
+<div class="container body pt-5">
+
+    <div class="row title_row justify-content-center mb-5">
+        <div class="col-lg-3 col-md-3 col-sm-8 col-8 title_col">
+                <div class="title_div">
+                <p class="title">Mon panier</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row content_row">
+        <div class="col">
+            <p><i data-feather="alert-circle"></i> Votre panier est vide</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-3">
+            <a href="/" class="btn btn-dark"><i data-feather="arrow-left"></i> Continuer mes achats</a>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
+
+{% block footer %}
+{{ parent() }}
+{% endblock %}

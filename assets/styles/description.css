@@ -1,0 +1,59 @@
+.body {
+    min-height: 400px;
+    width: 100%;
+    background-image: url('../images/corks-1554202_1920.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2em;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.product_name {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #f8b809;
+    line-height: 0.5em;
+}
+
+.transparence {
+    background-color: rgba(7, 7, 7, 0.761);
+    min-height: 400px;
+    width: 100%;
+    padding-top: 3%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 3%;
+}
+
+.product_img {
+    height: 290px;
+    width: 15rem;
+}
+
+.div_spec {
+    padding-top: 10%;
+}
+
+.spec {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-top: 2px solid #f8b809;
+    border-bottom: none;
+    background-color: rgba(255, 255, 255, 0);
+    width: 150px;
+    color: white;
+}
+
+.etend {
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 1px solid white;
+}
+
+.p_etend {
+    line-height: 0.3em;
+}

@@ -1,0 +1,126 @@
+{% extends "base.html.twig" %}
+
+{% block other_link %}
+
+{{ encore_entry_link_tags('profil') }}
+
+{% endblock %}
+
+{% block header %}{{ parent() }}{% endblock %}
+
+
+{% block body %}
+    
+
+
+    <div class="body">
+
+        <div class="transparence">
+
+
+            <div class="container mt-lg-0 mt-0 mt-sm-4 mt-4">
+                <p class="profil_title">
+                    <label>Profil</label>
+                </p>
+                <div class="row justify-content-between">
+                    <div class="col-lg-7 col-md-12 col-sm-12 order-lg-0 order-md-0 order-sm-1 order-1">
+
+                        <form>
+
+                            <div class="row justify-content-start">
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <label>Civilité:</label>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-4">
+                                    <input type="radio" id="homme" name="selector" value="homme">
+                                    <label for="homme">Mr</label>
+                                </div>
+                                 <div class="col-lg-3 col-md-3 col-sm-4">
+                                    <input type="radio" id="femme" name="selector" value="femme">
+                                    <label for="femme">Mme</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 mb-md-3 mb-sm-3">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="nom" placeholder="Votre nom">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 mb-md-3 mb-sm-3">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="nom" placeholder="Votre prénom">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12 col-sm-12 mb-md-3 mb-sm-3">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="mail" placeholder="Votre email">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 mb-md-3 mb-sm-3">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="contact" placeholder="Votre contact">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 mb-md-3 mb-sm-3">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="password" placeholder="Votre mot de passe">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <p>
+                                <label class="ad_title">Ajouter une adresse</label>
+                            </p>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 mb-md-3 mb-sm-3">
+                                    <div class="form-group">
+                                        <input type="text" class="adresse" id="adresse" placeholder="Votre adresse">
+                                    </div>
+                                    <div class="form-group">
+                                       <textarea class="form-control" id="suppl" rows="4" placeholder="Information supplémentaire"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-end">
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <div class="col-lg-4 col-md-12 col-sm-12 mb-5 order-lg-1 order-md-1 order-sm-0 order-0">
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="snap">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        
+    </div>
+
+
+
+
+{% endblock %}
+
+
+{% block footer %}{{ parent() }}{% endblock %}

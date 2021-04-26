@@ -1,0 +1,166 @@
+.body {
+    min-height: 400px;
+}
+
+.title-row-vin {
+    background-image: url('../images/wine-cover.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 230px;
+}
+
+.title-row-champagne {
+    background-image: url('../images/champagne-cover.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 230px;
+}
+
+.title-row-spiritueux {
+    background-image: url('../images/spiritueux-cover.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 230px;
+}
+
+.title-row-accessoire {
+    background-image: url('../images/accessoires-cover.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 230px;
+}
+
+.content-row {
+    background-color: #141414;
+    min-height: 300px;
+}
+
+.title_div {
+    background-color: white;
+    min-height: 100px;
+    margin-top: 5%;
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    text-align: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+}
+
+.fieldset-title {
+    border: solid 3px #6d6c6c !important;
+}
+
+.title_p {
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.product_div {
+    width: 13.6rem;
+}
+
+.product_div:hover {
+    border: 3px dashed rgba(255, 187, 0, 0.616);
+}
+
+.product_img {
+    height: 250px;
+}
+
+.prix {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: large;
+    color: rgb(248, 184, 9);
+}
+
+.card-title {
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+}
+
+.categorie_vin {
+    border: 7px solid rgba(255, 187, 0, 0.616);
+    background-image: url('../images/cork-1.png');
+    min-height: 400px;
+    min-width: 250px;
+    transform: perspective(900px) rotateY(35deg);
+}
+
+.categorie_spiritueux {
+    border: 7px solid rgba(255, 187, 0, 0.616);
+    background-image: url('../images/whiskey.png');
+    min-height: 400px;
+    min-width: 250px;
+    transform: perspective(900px) rotateY(35deg);
+}
+
+.categorie_champagne {
+    border: 7px solid rgba(255, 187, 0, 0.616);
+    background-image: url('../images/NoPath\ -\ Copie\ \(41\).png');
+    min-height: 400px;
+    min-width: 250px;
+    transform: perspective(900px) rotateY(35deg);
+}
+
+.categorie_accessoire {
+    border: 7px solid rgba(255, 187, 0, 0.616);
+    background-image: url('../images/NoPath\ -\ Copie\ \(43\).png');
+    min-height: 400px;
+    min-width: 250px;
+    transform: perspective(900px) rotateY(35deg);
+}
+
+.transparence {
+    min-height: 400px;
+    min-width: 100%;
+    background: rgba(255, 255, 255, 0.233);
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    padding-left: 8%;
+    padding-top: 5%;
+}
+
+.transparence h1 {
+    font-size: 3em;
+    color: rgb(255, 188, 2);
+    margin-bottom: 10%;
+}
+
+.transparence p {
+    font-size: x-large;
+    color: black;
+}
+
+@media (max-width: 576px) {
+    .title_div {
+        margin-top: 20%;
+        font-size: x-large;
+    }
+    .product_img {
+        width: 129px;
+        height: 150px;
+    }
+    .prix {
+        font-size: large;
+    }
+    .card-title {
+        font-size: large;
+    }
+    .product_div {
+        width: 131px;
+    }
+    .card-body {
+        padding-left: 1%;
+        line-height: 100%;
+    }
+}

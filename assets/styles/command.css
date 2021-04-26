@@ -1,0 +1,63 @@
+.body {
+    min-height: 400px;
+    width: 100%;
+    background-image: url('../images/comptoir.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: black;
+    font-weight: 600;
+    font-size: 1em;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.transparence {
+    background-color: rgba(7, 7, 7, 0.761);
+    min-height: 400px;
+    width: 100%;
+    padding-top: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 3%;
+}
+
+.container {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.profil p {
+    color: rgb(111, 112, 112);
+}
+
+.profil a {
+    float: right;
+}
+
+.list_product p {
+    line-height: 1em;
+}
+
+.title_panier {
+    text-align: center;
+    width: 100%;
+}
+
+.panier_back {
+    color: #f8b809;
+}
+
+.panier_back:hover {
+    color: #f8b809;
+    text-decoration: none;
+}
+
+.img_panier {
+    width: 90px;
+    height: 100px;
+}
+
+.prix {
+    color: #f8b809;
+}

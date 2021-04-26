@@ -1,0 +1,90 @@
+.principal {
+    min-height: 350px;
+    background-image: url("../images/NoPath\ -\ Copie.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    padding-top: 2%;
+}
+
+.connexion {
+    background-color: rgba(32, 31, 31, 0.466);
+    border: solid 1px rgb(248, 184, 9);
+    border-radius: 25px;
+    padding: 25px;
+    min-width: 260px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+}
+
+#img_ {
+    height: 600px;
+    display: none;
+}
+
+#mail,
+#mdp,
+#nom,
+#prenom,
+#conf-mdp {
+    background-color: rgba(32, 31, 31, 0.363);
+    border: solid 1px white;
+    color: white;
+}
+
+button {
+    width: 100%;
+    margin: 5px;
+}
+
+.gg {
+    background-color: #04306a;
+    border: none;
+}
+
+.title {
+    margin-top: 7px;
+    font-size: x-large;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+    color: #f2b100;
+}
+
+.mail:hover,
+.mdp:hover,
+.nom:hover,
+.prenom:hover,
+.conf-mdp:hover {
+    color: #f2b100;
+}
+
+.mail:hover #mail,
+.mdp:hover #mdp,
+.nom:hover #nom,
+.prenom:hover #prenom,
+.conf-mdp:hover #conf-mdp {
+    border-color: #f2b100;
+}
+
+.ssm {
+    font-size: 13px;
+}
+
+@media (max-width: 576px) {
+    .principal {
+        display: flex;
+        min-height: 100vh;
+    }
+}
+
+@media (max-width: 1024px) {
+    .principal {
+        display: flex;
+        min-height: 100vh;
+    }
+}

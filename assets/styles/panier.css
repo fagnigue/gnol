@@ -1,0 +1,22 @@
+.body {
+    min-height: 400px;
+}
+
+.title {
+    color: #ffbb00;
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.content_row {
+    background-color: azure;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+@media (max-width: 576px) {
+    .title {
+        font-size: x-large;
+    }
+}

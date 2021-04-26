@@ -1,0 +1,84 @@
+{% extends "base.html.twig" %}
+
+{% block other_link %}
+
+{{ encore_entry_link_tags('login') }}
+
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+
+{% block body %}
+    
+
+
+
+<div class="container-fluid principal">
+
+    <div class="row justify-content-lg-between justify-content-md-between justify-content-sm-center">
+        <div class="col-lg-4 col-md-4 d-lg-block d-md-block d-md-none d-sm-none d-none">
+            <img src="{{ asset('images/white-wine.png') }}" class="img-bottle">
+        </div>
+        <div class="col-lg-4 col-md-10 col-sm-10">
+
+            <div class="connexion">
+                    <div class="container-fluid">
+                        <div class="row justify-content-between">
+                            <div class="col-3"><a href="/">Retour</a></div>
+                            <div class="col-3"><a href="/">Gnol@</a></div>
+                        </div>
+
+                            {% block login_option %}
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="title"> Êtes vous déjà client ?</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3 mail">
+                                            <label for="mail" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="mail" placeholder="Saisir votre mail">
+                                        </div>
+
+                                        <div class="mb-3 mdp">
+                                            <label for="mdp" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="mdp" placeholder="Saisir votre mot de passe">
+                                        </div>
+
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                                            <label class="form-check-label ssm" for="rememberMe">se souvenir de moi</label>
+                                            <label class="mdp_forget"><a href="/change_password">Mot de passe oublié</a></label>
+                                        </div>
+                                        <button type="submit" class="btn btn-warning">Connexion</button>
+                                        <button type="submit" class="btn btn-primary gg">Se connecter avec google</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label>Vous n'avez pas de compte ?</label><a href="/signin">Inscrivez vous</a>
+                                    </div>
+                                </div>
+
+                            {% endblock %}
+                    </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

@@ -1,5 +1,11 @@
 {% extends "base.html.twig" %}
 
+{% block other_link %}
+
+{{ encore_entry_link_tags('home') }}
+
+{% endblock %}
+
 {% block header %}{{ parent() }}{% endblock %}
 
 
@@ -8,7 +14,358 @@
 
 
 
-<p>HOME PAGE</p>
+<div class="body">
+
+
+    <div class="slide">
+
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item item1 active">
+                        <div class="transparence">
+                            
+                        
+                                <div class="row justify-content-md-center">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none d-none">
+                                        <img src="{{ asset('images/bottle_wine.png') }}" style="width:700px; margin-top:5%;">
+                                    </div>
+                                    <div class="col-lg-6 col-md-10 col-sm-12 carousel-text" >
+                                        <div>
+                                            <h1>Commandez vos différents alcools avec <font color="#f2b100">Gnol</font></h1>
+                                            <p class="lorem">
+                                                lorem est simplement un faux texte employé dans la composition
+                                                et la mise en page avant impression. lorem est simplement un 
+                                                faux texte employé dans la composition et la mise en page avant 
+                                                impression. lorem est simplement un faux texte employé dans la 
+                                                composition et la mise en page avant impression.
+                                            </p>
+                                            <a class="btn btn-warning">Connexion</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+
+                        </div>
+                    </div>
+
+                    <div class="carousel-item item2">
+                        <div class="transparence">
+                            
+                                <div class="row justify-content-md-center">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none d-none">
+                                        <img src="{{ asset('images/spirit-bottle.png')}}" style="height: 500px; display: block; margin: auto;">
+                                    </div>
+                                    <div class="col-lg-6 col-md-10 col-sm-12 carousel-text">
+                                        <div>
+                                            <h1>Commandez vos différents alcools avec <font color="#f2b100">Gnol</font></h1>
+                                            <p class="lorem">
+                                                lorem est simplement un faux texte employé dans la composition
+                                                et la mise en page avant impression. lorem est simplement un 
+                                                faux texte employé dans la composition et la mise en page avant 
+                                                impression. lorem est simplement un faux texte employé dans la 
+                                                composition et la mise en page avant impression.
+                                            </p>
+                                            <a class="btn btn-warning">Connexion</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="carousel-item item3">
+                        <div class="transparence">
+                            
+                                <div class="row justify-content-md-center">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 d-lg-block d-md-none d-sm-none d-none">
+                                        <img src="{{asset('images/champagne-bottle.png')}}" style="height: 500px; display: block; margin: auto;">
+                                    </div>
+                                    <div class="col-lg-6 col-md-10 col-sm-12 carousel-text">
+                                        <div>
+                                            <h1>Commandez vos différents alcools avec <font color="#f2b100">Gnol</font></h1>
+                                            <p class="lorem">
+                                                lorem est simplement un faux texte employé dans la composition
+                                                et la mise en page avant impression. lorem est simplement un 
+                                                faux texte employé dans la composition et la mise en page avant 
+                                                impression. lorem est simplement un faux texte employé dans la 
+                                                composition et la mise en page avant impression.
+                                            </p>
+                                            <a class="btn btn-warning">Connexion</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+    </div>
+    <div class="container-fluid">
+
+
+
+
+        <div class="row">
+            <div class="col-12">
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-8 col-sm-12 col-12 title-1 mb-5 mt-5">
+                        
+                        <fieldset class="border fieldset-title">
+                            <legend class="w-auto legend-title">
+                                NOS
+                            </legend>
+                            <label>PRODUITS DISPONIBLE EN CAVE</label>
+                        </fieldset>
+                        
+                    </div>
+                </div>
+
+                <div class="row justify-content-around mb-5">
+                    <div class="col-lg-3 col-md-3 col-sm-10 col-10 bl-1">
+                        <label>Les plus commandés</label>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-10 col-10 bl-2">
+                        <label>Nos vignerons</label>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-10 col-10 bl-3">
+                        <label>BIO</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--NOS VINS-->
+        <div class="row mb-5">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-4 col-sm-8 col-8">
+
+                        <div class="vin-title">
+                            <fieldset class="border fieldset-title-vin">
+                                <legend class="w-auto legend-title-vin">
+                                    Nos
+                                </legend>
+                                <label>Vins</label>
+                            </fieldset>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center justify-content-center list_product">
+
+            
+
+                <div class="col-lg-8 col-md-10 col-sm-12 col-12">
+
+                    <div class="product-div">
+                    {% for i in 1..6 %}
+
+                        <div class="card product_div">
+
+                            <img src="{{ asset('images/product_vin.png') }}" class="card-img-top product_img">
+                            <div class="card-body">
+                                <label class="card-title">Vendange</label>
+                                <p class="prix">2700$</p>
+                                <a href="/products/vin/categorie/description/Vendange" class="stretched-link"></a>
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+                    </div>
+                    
+
+                </div>
+
+
+        </div>
+
+        <div class="row justify-content-center mt-1 mb-5">
+            <div class="col-lg-3 col-md-6 col-sm-12" style="text-align: center;">
+                <a href="/products/vin" class="more link-dark">Voir plus</a>
+            </div>
+        </div>
+
+
+
+        <!-- NOS CHAMPAGNES -->
+        <div class="row mb-5">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-4 col-sm-8 col-8">
+
+                        <div class="vin-title">
+                            <fieldset class="border fieldset-title-vin">
+                                <legend class="w-auto legend-title-vin">
+                                    Nos
+                                </legend>
+                                <label>Champagnes</label>
+                            </fieldset>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center justify-content-center justify-content-center list_product">
+
+            
+
+
+                <div class="col-lg-8 col-md-10 col-sm-12 col-12 mb-3">
+
+                    <div class="product-div">
+                    {% for i in 1..6 %}
+
+                        <div class="card product_div">
+                            <img src="{{ asset('images/boheme.png') }}" class="card-img-top product_img">
+                            <div class="card-body">
+                                <label class="card-title">Bohème</label>
+                                <p class="prix">2000$</p>
+                                <a href="/products/champagne/categorie/description/Bohème" class="stretched-link"></a>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                    </div>
+
+                </div>
+
+            
+
+
+        </div>
+
+        <div class="row justify-content-center mt-1 mb-5">
+            <div class="col-lg-3 col-md-6 col-sm-12" style="text-align: center;">
+                <a href="/products/champagne" class="more link-dark">Voir plus</a>
+            </div>
+        </div>
+
+
+
+
+        <!-- NOS SPIRITUEUX -->
+        <div class="row mb-5">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-4 col-sm-8 col-8">
+
+                        <div class="vin-title">
+                            <fieldset class="border fieldset-title-vin">
+                                <legend class="w-auto legend-title-vin">
+                                    Nos
+                                </legend>
+                                <label>Spiritueux</label>
+                            </fieldset>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center justify-content-center list_product">
+
+
+                <div class="col-lg-8 col-md-10 col-sm-12 col-12 mb-3">
+
+                    <div class="product-div">
+                    {% for i in 1..6 %}
+            
+                    <div class="card product_div">
+                        <img src="{{ asset('images/spiritueux_.png') }}" class="card-img-top product_img">
+                        <div class="card-body">
+                            <label class="card-title">Jack</label>
+                            <p class="prix">1300$</p>
+                            <a href="/products/spiritueux/categorie/description/Jack" class="stretched-link"></a>
+                        </div>
+                    </div>
+
+                     {% endfor %}
+                    </div>
+
+                </div>
+
+
+        </div>
+
+        <div class="row justify-content-center mt-1 mb-5">
+            <div class="col-lg-3 col-md-6 col-sm-12" style="text-align: center;">
+                <a href="/products/spiritueux" class="more link-dark">Voir plus</a>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="newsletter">
+        <div class="newsletter-transparence">
+            <h4 class="ml-lg-5 ml-md-5 ml-sm-2 ml-2">CONTACTEZ NOUS ICI</h4>
+            <hr style="width: 100%;">
+            <div class="newsletter-parent">
+                <img src="{{ asset('images/cave.png') }}" class="newsletter-img">
+                <div class="newsletter-form">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-lg-7 col-md-7">
+                                <label class="newsletter-form-label">Contactez nous</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-md-center">
+                            <div class="col-lg-12 col-md-12">
+                               <form>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="saisir votre email ici">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact">Contact</label>
+                                        <input type="email" class="form-control" id="contact" placeholder="saisir votre numéro de téléphone ici">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message">Message</label>
+                                        <textarea class="form-control" id="message" rows="3" placeholder="Saisir votre message ici"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-warning">Envoyer</button>
+                               </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

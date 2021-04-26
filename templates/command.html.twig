@@ -1,0 +1,208 @@
+{% extends "base.html.twig" %}
+
+{% block other_link %}
+
+{{ encore_entry_link_tags('command') }}
+
+{% endblock %}
+
+{% block header %}
+{{ parent() }}
+{% endblock %}
+
+
+{% block body %}
+    
+
+
+
+
+<div class="body">
+
+    <div class="transparence">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-8 col-md-8 col-sm-12 col-12 order-lg-0 order-md-0 order-sm-1 order-1">
+
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="profil bg-light p-lg-2 p-md-2 p-sm-3 p-3">
+                                <label>ADRESSE</label>
+                                <a>MODIFIER</a>
+                                <hr>
+                                <p class="ml-lg-5 ml-md-5 ml-sm-3 ml-sm-3">
+                                    Jean Calvin klein <br>
+                                    jcklein@gmail.com <br>
+                                    Abidjan BP125, Cocody, Angré <br>
+                                    +2250778542365
+                                </p>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="livraison bg-light mt-3 p-2">
+                            <label>MODE DE LIVRAISON</label>
+                            <hr>
+                            <p class="pl-1">
+                                Comment voulez vous que votre commande soit livrée ?<br>
+                                
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio1">
+                                    <label class="form-check-label" for="radio1">
+                                        Point de relais
+                                    </label>
+                                    <p>
+                                        <button class="btn btn-warning">Choisir le point de relais</button>
+                                    <p>
+                                </div>
+                                 <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio2" checked>
+                                    <label class="form-check-label" for="radio2">
+                                        À domicile
+                                    </label>
+                                </div>
+
+
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="paiement bg-light mt-3 p-2">
+
+                                <label>MODE DE PAIEMENT</label>
+                                <hr>
+                                <p class="pl-1">
+
+                                    Quel moyen de paiement preferez-vous ?
+
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="livraison" id="radio0" checked>
+                                        <label class="form-check-label" for="radio0">
+                                            à la livraison
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="visa" id="radio1">
+                                        <label class="form-check-label" for="radio1">
+                                            Visa
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="mastercard" id="radio2">
+                                        <label class="form-check-label" for="radio2">
+                                            MasterCard
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="orangemoney" id="radio3">
+                                        <label class="form-check-label" for="radio3">
+                                            Orange Money
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="mtnmoney" id="radio4">
+                                        <label class="form-check-label" for="radio4">
+                                            MTN Money
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="moovmoney" id="radio5">
+                                        <label class="form-check-label" for="radio5">
+                                            MOOV Money
+                                        </label>
+                                    </div>
+                                
+                                </p>
+                                
+                                <a class="btn btn-warning w-100">COMMANDER</a>
+                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 order-lg-1 order-md-1 order-sm-0 order-0 mb-lg-0 mb-md-0 mb-sm-4 mb-5 mt-lg-0 mt-md-0 mt-sm-4 mt-5">
+
+                    <div class="panier bg-light mr-2 p-1">
+                        <div class="title_panier"><font color="#f8b809">VOTRE COMMANDE</font></div>
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="{{ asset('images/product_vin.png') }}" class="img_panier">
+                            </div>
+                            <div class="col-8 list_product">
+                                <p>
+                                    Vendange <br>
+                                    Bordeaux | Haut-Medoc <br>
+                                <p>
+                                <p>
+                                    <label class="prix">2500$</label><br>
+                                    <label>Qte 1</label>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                
+
+                                <div class="row justify-content-lg-between justify-content-md-between justify-content-sm-around justify-content-around">
+                                    <div class="col-5">
+                                        <label>Total-partiel</label>
+                                    </div>
+                                     <div class="col-3">
+                                        <label class="prix">2500$</label>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-lg-between justify-content-md-between justify-content-sm-around justify-content-around">
+                                    <div class="col-5">
+                                        <label>Frais livraison</label>
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="prix">0$</label>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-lg-between justify-content-md-between justify-content-sm-around justify-content-around">
+                                    <div class="col-5">
+                                        <label>Total</label>
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="prix">2500$</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="title_panier"><a href="/panier" class="panier_back">RETOUR AU PANIER</a></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
+
+{% block footer %}
+{{ parent() }}
+{% endblock %}

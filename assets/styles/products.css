@@ -65,6 +65,8 @@
 
 .product_div {
     width: 13.6rem;
+    display: block;
+    margin: auto;
 }
 
 .product_div:hover {
@@ -158,6 +160,8 @@
     }
     .product_div {
         width: 131px;
+        display: block;
+        margin: auto;
     }
     .card-body {
         padding-left: 1%;

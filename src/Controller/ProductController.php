@@ -2,6 +2,7 @@
 // src/Controller/ProductController.php
 namespace App\Controller;
 
+use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,30 +18,39 @@ class ProductController extends AbstractController
      *@Route("/vin")
      *
      */
-    public function vin(): Response
+    public function vin(ProductRepository $productRepository): Response
     {
+        $vin = $productRepository->getWineProduct();
 
-        return $this->render('products/vin.html.twig');
+        return $this->render('products/vin.html.twig', [
+            "vin"=>$vin
+        ]);
     }
 
     /**
      *@Route("/champagne")
      *
      */
-    public function champagne(): Response
+    public function champagne(ProductRepository $productRepository): Response
     {
+        $champagne = $productRepository->getChampagneProduct();
 
-        return $this->render('products/champagne.html.twig');
+        return $this->render('products/champagne.html.twig', [
+            "champagne"=>$champagne
+        ]);
     }
 
     /**
      *@Route("/spiritueux")
      *
      */
-    public function spiritueux(): Response
+    public function spiritueux(ProductRepository $productRepository): Response
     {
+        $spiritueux = $productRepository->getSpiritueuxProduct();
 
-        return $this->render('products/spiritueux.html.twig');
+        return $this->render('products/spiritueux.html.twig', [
+            "spiritueux"=>$spiritueux
+        ]);
     }
 
     /**

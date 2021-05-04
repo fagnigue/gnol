@@ -53,7 +53,7 @@
             <div class="row">
 
 
-                    {% for i in 1..6 %}
+                    {% for c in champagne %}
 
                         {% block list_product %}
 
@@ -62,8 +62,8 @@
                             <div class="card product_div">
                                 <img src="{{ asset('images/boheme.png') }}" class="card-img-top product_img">
                                 <div class="card-body">
-                                    <label class="card-title">Bohème</label>
-                                    <p class="prix">2000$</p>
+                                    <label class="card-title">{{ c.label }}</label>
+                                    <p class="prix">{{ c.price }}</p>
                                     <a href="/products/champagne/categorie/description/boheme" class="stretched-link"></a>
                                 </div>
                             </div>

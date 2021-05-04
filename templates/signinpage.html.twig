@@ -18,9 +18,9 @@
 
 <div class="container-fluid principal">
 
-    <div class="row justify-content-between">
+    <div class="row justify-content-around">
 
-        <div class="col-md-12 col-12 col-sm-12">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-12">
 
             <div class="connexion">
                     <div class="container-fluid">
@@ -30,48 +30,58 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
+                                {% if alert %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ alert }}
+                                    </div>
+                                {% endif %}
+                            
                                 <p class="title">Inscrivez vous ici</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
 
-                                <div class="mb-2 nom">
-                                    <label for="nom" class="form-label">Nom</label>
-                                    <input type="email" class="form-control" id="nom" placeholder="Saisir votre nom">
-                                </div>
+                                <form method="post">
+                                    <div class="mb-2 nom">
+                                        <label for="nom" class="form-label">Nom</label>
+                                        <input type="text" class="form-control" id="nom" placeholder="Saisir votre nom" name="nom" required>
+                                    </div>
 
-                                <div class="mb-2 prenom">
-                                    <label for="prenom" class="form-label">Prénom</label>
-                                    <input type="email" class="form-control" id="prenom" placeholder="Saisir votre prénom">
-                                </div>
+                                    <div class="mb-2 prenom">
+                                        <label for="prenom" class="form-label">Prénom</label>
+                                        <input type="text" class="form-control" id="prenom" placeholder="Saisir votre prénom" name="prenom" required>
+                                    </div>
 
-                                <div class="mb-2 mail">
-                                    <label for="mail" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="mail" placeholder="Saisir votre mail">
-                                </div>
+                                    <div class="mb-2 mail">
+                                        <label for="mail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="mail" placeholder="Saisir votre mail" name="email" required>
+                                    </div>
 
-                                <div class="mb-3 mdp">
-                                    <label for="mdp" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="mdp" placeholder="Saisir votre mot de passe">
-                                </div>
+                                    <div class="mb-2 telephone">
+                                        <label for="telephone" class="form-label">Telephone</label>
+                                        <input type="text" class="form-control" id="telephone" placeholder="Saisir votre numéro de téléphone" name="telephone" required>
+                                    </div>
 
-                                <div class="mb-2 conf-mdp">
-                                    <label for="conf-mdp" class="form-label">Confirmation mot de passe</label>
-                                    <input type="password" class="form-control" id="conf-mdp" placeholder="Saisir à nouveau votre mot de passe">
-                                </div>
+                                    <div class="mb-3 mdp">
+                                        <label for="mdp" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="mdp" placeholder="Saisir votre mot de passe" name="password" required>
+                                    </div>
 
-                                <div class="mb-2 form-check">
-                                    <input type="checkbox" class="form-check-input" id="rememberMe">
-                                    <label class="form-check-label ssm" for="rememberMe">En cliquant, vous acceptez <a href="#">les termes de condition générale</a></label>
-                                </div>
-                                <button type="submit" class="btn btn-warning">S'inscrire</button>
-                                <button type="submit" class="btn btn-primary gg">Se connecter avec google</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <label>Vous n'avez pas de compte ?</label><a href="#">Inscrivez vous</a>
+                                    <div class="mb-2 conf-mdp">
+                                        <label for="conf-mdp" class="form-label">Confirmation mot de passe</label>
+                                        <input type="password" class="form-control" id="conf-mdp" placeholder="Saisir à nouveau votre mot de passe" name="conf_password" required>
+                                        <small id="emailHelp" class="form-text text-muted"><font color="#f2b100">{{ error }}</font></small>
+                                    </div>
+
+                                    <div class="mb-2 form-check">
+                                        <input type="checkbox" value="accept" class="form-check-input" id="accepr" name="accept" required>
+                                        <label class="form-check-label ssm" for="accept">En cliquant, vous acceptez <a href="#">les termes de condition générale</a></label>
+                                    </div>
+                                    <button type="submit" name="submit" class="btn btn-warning">S'inscrire</button>
+                                    <button type="submit" class="btn btn-primary gg">Se connecter avec google</button>
+                                </form>
+                            
                             </div>
                         </div>
                     </div>
@@ -79,7 +89,7 @@
 
         </div>
 
-        <div class="col-md-4 col-xs-12 col-sm-12">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-12">
             <img class="float-right" src="{{ asset('images/white-wine.png') }}" id="img_">
         </div>
     </div>

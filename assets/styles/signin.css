@@ -25,6 +25,7 @@
 }
 
 #mail,
+#telephone,
 #mdp,
 #nom,
 #prenom,
@@ -56,6 +57,7 @@ a:hover {
 }
 
 .mail:hover,
+.telephone:hover,
 .mdp:hover,
 .nom:hover,
 .prenom:hover,
@@ -64,6 +66,7 @@ a:hover {
 }
 
 .mail:hover #mail,
+.telephone:hover #telephone,
 .mdp:hover #mdp,
 .nom:hover #nom,
 .prenom:hover #prenom,

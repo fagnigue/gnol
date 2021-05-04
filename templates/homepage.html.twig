@@ -39,7 +39,7 @@
                                                 impression. lorem est simplement un faux texte employé dans la 
                                                 composition et la mise en page avant impression.
                                             </p>
-                                            <a class="btn btn-warning">Connexion</a>
+                                            <a class="btn btn-warning  mt-md-5 mt-sm-3 mt-3  ml-md-3 ml-sm-3 ml-3" style="font-size: x-large;">Connexion</a>
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                                 impression. lorem est simplement un faux texte employé dans la 
                                                 composition et la mise en page avant impression.
                                             </p>
-                                            <a class="btn btn-warning">Connexion</a>
+                                            <a class="btn btn-warning  mt-md-5 mt-sm-3 mt-3 ml-md-3 ml-sm-3 ml-3" style="font-size: x-large;">Connexion</a>
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                                                 impression. lorem est simplement un faux texte employé dans la 
                                                 composition et la mise en page avant impression.
                                             </p>
-                                            <a class="btn btn-warning">Connexion</a>
+                                            <a class="btn btn-warning mt-md-5 mt-sm-3 mt-3 ml-md-3 ml-sm-3 ml-3" style="font-size: x-large;">Connexion</a>
                                         </div>
                                     </div>
                                 </div>
@@ -113,8 +113,6 @@
     <div class="container-fluid">
 
 
-
-
         <div class="row">
             <div class="col-12">
 
@@ -125,7 +123,7 @@
                             <legend class="w-auto legend-title">
                                 NOS
                             </legend>
-                            <label>PRODUITS DISPONIBLE EN CAVE</label>
+                            <label>PRODUITS DISPONIBLES EN CAVE</label>
                         </fieldset>
                         
                     </div>
@@ -176,15 +174,15 @@
                 <div class="col-lg-8 col-md-10 col-sm-12 col-12">
 
                     <div class="product-div">
-                    {% for i in 1..6 %}
+                    {% for v in vin %}
 
                         <div class="card product_div">
 
                             <img src="{{ asset('images/product_vin.png') }}" class="card-img-top product_img">
                             <div class="card-body">
-                                <label class="card-title">Vendange</label>
-                                <p class="prix">2700$</p>
-                                <a href="/products/vin/categorie/description/Vendange" class="stretched-link"></a>
+                                <label class="card-title">{{v.label}}</label>
+                                <p class="prix">{{ v.price }}</p>
+                                <a href="/products/vin/categorie/description/{{ v.label }}" class="stretched-link"></a>
                             </div>
 
                         </div>
@@ -237,13 +235,13 @@
                 <div class="col-lg-8 col-md-10 col-sm-12 col-12 mb-3">
 
                     <div class="product-div">
-                    {% for i in 1..6 %}
+                    {% for c in champagne %}
 
                         <div class="card product_div">
                             <img src="{{ asset('images/boheme.png') }}" class="card-img-top product_img">
                             <div class="card-body">
-                                <label class="card-title">Bohème</label>
-                                <p class="prix">2000$</p>
+                                <label class="card-title">{{c.label}}</label>
+                                <p class="prix">{{ c.price }}</p>
                                 <a href="/products/champagne/categorie/description/Bohème" class="stretched-link"></a>
                             </div>
                         </div>
@@ -296,13 +294,13 @@
                 <div class="col-lg-8 col-md-10 col-sm-12 col-12 mb-3">
 
                     <div class="product-div">
-                    {% for i in 1..6 %}
+                    {% for s in spiritueux %}
             
                     <div class="card product_div">
                         <img src="{{ asset('images/spiritueux_.png') }}" class="card-img-top product_img">
                         <div class="card-body">
-                            <label class="card-title">Jack</label>
-                            <p class="prix">1300$</p>
+                            <label class="card-title">{{ s.label }}</label>
+                            <p class="prix">{{ s.price }}</p>
                             <a href="/products/spiritueux/categorie/description/Jack" class="stretched-link"></a>
                         </div>
                     </div>
@@ -325,9 +323,40 @@
 
     </div>
 
+    <div class="beer">
+
+        <div class="beer-transparence">
+
+            <div class="container-fluid">
+                <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center justify-content-center">
+                    <div class="col-lg-3 col-md-4 col-sm-8 col-10">
+                        
+                        <div class="beer-title">
+                            <fieldset class="border fieldset-title-beer">
+                                <legend class="w-auto legend-title-beer">
+                                    Notre
+                                </legend>
+                                <label>BIÈRE ARTISANALE</label>
+                            </fieldset>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="beer-img">
+                <img class="beer-img-1" src="{{ asset('images/beer-round-1.png') }}">
+                <img class="beer-img-2" src="{{ asset('images/beer-round-2.png') }}">
+            </div>
+
+        </div>
+
+    </div>
+
     <div class="newsletter">
         <div class="newsletter-transparence">
-            <h4 class="ml-lg-5 ml-md-5 ml-sm-2 ml-2">CONTACTEZ NOUS ICI</h4>
+            <h4 class=" ml-lg-5 ml-md-5 ml-sm-2 ml-2">CONTACTEZ NOUS ICI</h4>
             <hr style="width: 100%;">
             <div class="newsletter-parent">
                 <img src="{{ asset('images/cave.png') }}" class="newsletter-img">

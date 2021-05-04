@@ -148,10 +148,6 @@ footer {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.footer-info {
-    list-style: none;
-}
-
 .footer-row2-title {
     font-size: x-large;
 }
@@ -211,6 +207,12 @@ hr {
     .i-cart::after {
         content: " Panier";
     }
+    .dropdown {
+        display: inline-block;
+        padding: 0px 10px 0px 0px;
+        position: relative;
+        color: #efefef;
+    }
     .dropdown-content {
         display: none;
         position: absolute;
@@ -231,7 +233,9 @@ hr {
         display: block;
         border: 1px solid #ccc;
         padding: 7px 14px 9px;
-        width: 100%;
+        width: 50px;
+        margin-left: 10px;
+        margin-top: 30px;
     }
     .nav-div .nav-links .dropdown {
         display: block;
@@ -241,7 +245,8 @@ hr {
         height: 0px;
     }
     .nav-div #nav-check:checked~.nav-links {
-        height: calc(100vh - 50px);
+        /*height: calc(100vh - 50px);*/
+        height: auto;
         overflow-y: auto;
     }
 }
@@ -290,6 +295,12 @@ hr {
     }
     .i-cart::after {
         content: " Panier";
+    }
+    .dropdown {
+        display: inline-block;
+        padding: 0px 10px 5px 0px;
+        position: relative;
+        color: #efefef;
     }
     .dropdown-content {
         display: none;

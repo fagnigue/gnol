@@ -34,7 +34,7 @@ class Product
     private $quantity;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="decimal", precision=7, scale=2)
      */
     private $price;
 
@@ -69,7 +69,7 @@ class Product
     private $label_desc;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $bottle_type;
 
@@ -121,12 +121,12 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getPrice(): ?string
     {
         return $this->price;
     }
 
-    public function setPrice(float $price): self
+    public function setPrice(string $price): self
     {
         $this->price = $price;
 

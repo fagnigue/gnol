@@ -40,7 +40,11 @@
 
                     {% block categorie_content %}
                         <h1>Catégories</h1>
-                        <p>Lehmann glass</p>
+                        <p>
+                        {% for s in sous_category %}
+                            <a href="/products/{{ category }}/{{ s.label }}" class="list_a">{{ s.label }}</a><br>
+                        {% endfor %}
+                        </p>
                     {% endblock %}
 
 
@@ -50,21 +54,21 @@
         
         <div class="col-lg-8 col-md-8 col-sm-11 col-11">
 
-            <div class="row justify-content-sm-around justify-content-around">
+            <div class="row">
 
 
-                    {% for i in 1..6 %}
+                    {% for product in products %}
 
                         {% block list_product %}
 
                         <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-3">
                     
                             <div class="card product_div">
-                                <img src="{{ asset('images/accessoires.png') }}" class="card-img-top product_img">
+                                <img src="{{ asset('uploads/product_image/'~product.image_url) }}" class="card-img-top product_img">
                                 <div class="card-body">
-                                    <label class="card-title">verres(coupe)</label>
-                                    <label class="prix">45$</label>
-                                    <a href="/products/accessoires/categorie/description/verres(coupe)" class="stretched-link"></a>
+                                    <label class="card-title">{{ product.label }}</label>
+                                    <p class="prix">{{ product.price }}</p>
+                                    <a href="/products/{{ category }}/description/{{ product.id }}" class="stretched-link"></a>
                                 </div>
                             </div>
 

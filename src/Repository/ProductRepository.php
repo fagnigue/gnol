@@ -19,69 +19,83 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function getWineProduct()
+    public function getProductByCategory(string $category)
     {
         $connection = $this->getEntityManager()->getConnection();
 
-        $sql = $queryvin = "SELECT 
-                            product.id, 
-                            product.label, 
-                            product.image_url,
-                            product.price 
-                            FROM 
-                            product INNER JOIN sous_category
-                            ON product.souscategorie_id = sous_category.id
-                            INNER JOIN category 
-                            ON sous_category.categorie_id = category.id
-                            WHERE category.label = 'Vin';";
+        $sql = "SELECT 
+                product.id, 
+                product.label, 
+                product.image_url,
+                product.price 
+                FROM 
+                product INNER JOIN sous_category
+                ON product.souscategorie_id = sous_category.id
+                INNER JOIN category 
+                ON sous_category.categorie_id = category.id
+                WHERE category.label = :category;";
         $stmt = $connection->prepare($sql);
-        $stmt->execute();
+        $stmt->execute(["category"=>$category]);
 
         return $stmt->fetchAllAssociative();
     }
 
-    public function getChampagneProduct()
+    public function getsouscategorie(string $category)
     {
         $connection = $this->getEntityManager()->getConnection();
 
-        $sql = $queryvin = "SELECT 
-                            product.id, 
-                            product.label, 
-                            product.image_url,
-                            product.price 
-                            FROM 
-                            product INNER JOIN sous_category
-                            ON product.souscategorie_id = sous_category.id
-                            INNER JOIN category 
-                            ON sous_category.categorie_id = category.id
-                            WHERE category.label = 'Champagne';";
+        $sql = "SELECT
+                sous_category.label
+                FROM
+                sous_category INNER JOIN category
+                ON sous_category.categorie_id = category.id
+                WHERE category.label = :category;";
         $stmt = $connection->prepare($sql);
-        $stmt->execute();
+        $stmt->execute(["category"=>$category]);
 
         return $stmt->fetchAllAssociative();
     }
 
-    public function getSpiritueuxProduct()
+    public function getProductBySouscategory(string $sous_category)
     {
         $connection = $this->getEntityManager()->getConnection();
 
-        $sql = $queryvin = "SELECT 
-                            product.id, 
-                            product.label, 
-                            product.image_url,
-                            product.price 
-                            FROM 
-                            product INNER JOIN sous_category
-                            ON product.souscategorie_id = sous_category.id
-                            INNER JOIN category 
-                            ON sous_category.categorie_id = category.id
-                            WHERE category.label = 'Spiritueux';";
+        $sql= "SELECT
+                product.id, 
+                product.label, 
+                product.image_url,
+                product.price
+                FROM
+                product INNER JOIN sous_category
+                ON product.souscategorie_id = sous_category.id
+                WHERE sous_category.label = :sous_category;";
         $stmt = $connection->prepare($sql);
-        $stmt->execute();
+        $stmt->execute(["sous_category"=>$sous_category]);
 
         return $stmt->fetchAllAssociative();
     }
 
+    public function getOneProduct (int $id)
+    {
+
+        $connection = $this->getEntityManager()->getConnection();
+
+        $sql = "SELECT
+                product.id,
+                product.label,
+                product.label_desc,
+                product.price,
+                product.bottle_type,
+                product.description,
+                product.image_url
+                FROM
+                product 
+                WHERE product.id = :id;";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute(["id"=>$id]);
+
+        return $stmt->fetchAllAssociative();
+    }
 
 
 

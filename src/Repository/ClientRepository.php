@@ -19,6 +19,54 @@ class ClientRepository extends ServiceEntityRepository
         parent::__construct($registry, Client::class);
     }
 
+    public function getOneClient(string $email)
+    {
+        $connection = $this->getEntityManager()->getConnection();
+
+        $sql = "SELECT
+                client.id,
+                client.firstname,
+                client.lastname,
+                client.password,
+                client.email,
+                client.telephone,
+                client.photo,
+                client.adresse,
+                client.info_sup,
+                client.genre
+                FROM
+                client 
+                WHERE client.email = :email;";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute(["email"=>$email]);
+
+        return $stmt->fetchAllAssociative();
+    }
+
+    public function getOneClientById(int $id)
+    {
+        $connection = $this->getEntityManager()->getConnection();
+
+        $sql = "SELECT
+                client.id,
+                client.firstname,
+                client.lastname,
+                client.password,
+                client.email,
+                client.telephone,
+                client.photo,
+                client.adresse,
+                client.info_sup,
+                client.genre
+                FROM
+                client 
+                WHERE client.id = :id;";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute(["id"=>$id]);
+
+        return $stmt->fetchAllAssociative();
+    }
+
     // /**
     //  * @return Client[] Returns an array of Client objects
     //  */

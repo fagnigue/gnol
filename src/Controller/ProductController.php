@@ -15,86 +15,66 @@ class ProductController extends AbstractController
 {
 
     /**
-     *@Route("/vin")
+     * @Route("/{category}/{souscategory}")
      *
      */
-    public function vin(ProductRepository $productRepository): Response
+    public function product(ProductRepository $productRepository, string $category, string $souscategory = 'all')
     {
-        $vin = $productRepository->getWineProduct();
+        $sous_category = $productRepository->getsouscategorie($category);
+        if ($souscategory == 'all') {
+            $product = $productRepository->getProductByCategory($category);
+        } else {
+            $product = $productRepository->getProductBySouscategory($souscategory);
+        }
 
-        return $this->render('products/vin.html.twig', [
-            "vin"=>$vin
+        if ($category == 'Vin') {
+
+            $template = 'products/vin.html.twig';
+
+        } elseif ($category == 'Champagne') {
+            
+            $template = 'products/champagne.html.twig';
+
+        } elseif ($category == 'Spiritueux') {
+
+            $template = 'products/spiritueux.html.twig';
+
+        } elseif ($category == 'Accessoire') {
+            $template = 'products/accessoires.html.twig';
+        }
+
+
+        return $this->render($template, [
+            "category"=>$category,
+            "products"=>$product,
+            "sous_category"=>$sous_category
         ]);
+
+
     }
 
-    /**
-     *@Route("/champagne")
-     *
-     */
-    public function champagne(ProductRepository $productRepository): Response
-    {
-        $champagne = $productRepository->getChampagneProduct();
-
-        return $this->render('products/champagne.html.twig', [
-            "champagne"=>$champagne
-        ]);
-    }
+    
 
     /**
-     *@Route("/spiritueux")
-     *
-     */
-    public function spiritueux(ProductRepository $productRepository): Response
-    {
-        $spiritueux = $productRepository->getSpiritueuxProduct();
-
-        return $this->render('products/spiritueux.html.twig', [
-            "spiritueux"=>$spiritueux
-        ]);
-    }
-
-    /**
-     *@Route("/accessoires")
-     *
-     */
-    public function accessoires(): Response
-    {
-
-        return $this->render('products/accessoires.html.twig');
-    }
-
-    /**
-     * @Route("/vin/{categorie}/description/{nom}")
+     * @Route("/{categorie}/description/{id}")
      * 
      */
-    public function vin_desc(string $nom)
+    public function vin_desc(ProductRepository $productRepository, int $id, string $categorie)
     {
+        
+        $query = $productRepository->getOneProduct($id);
+        $category =  $categorie;
+
+        if ($query) {
+            $product = $query[0];
+        }
+
         return $this->render('products/description.html.twig', [
-            'nom' => $nom,
+            'product' => $product,
+            'category' => $category
         ]);
     }
 
-    /**
-     * @Route("/spiritueux/{categorie}/description/{nom}")
-     * 
-     */
-    public function spiritueux_desc(string $nom)
-    {
-        return $this->render('products/description.html.twig', [
-            'nom' => $nom,
-        ]);
-    }
-
-    /**
-     * @Route("/champagne/{categorie}/description/{nom}")
-     * 
-     */
-    public function champagne_desc(string $nom)
-    {
-        return $this->render('products/description.html.twig', [
-            'nom' => $nom,
-        ]);
-    }
 
     /**
      * @Route("/accessoires/{categorie}/description/{nom}")

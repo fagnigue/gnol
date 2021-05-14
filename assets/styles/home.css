@@ -8,6 +8,12 @@
     min-height: 400px;
 }
 
+.advice {
+    font-weight: bold;
+    font-size: 3em;
+    font-style: italic;
+}
+
 .item1 {
     background-image: url('../images/corks-1554202_1920.png');
     background-size: cover;
@@ -115,6 +121,10 @@
     white-space: nowrap;
 }
 
+.product-div::-webkit-scrollbar {
+    display: none;
+}
+
 .product_div {
     width: 13.6rem;
     display: inline-block;
@@ -125,11 +135,15 @@
 }
 
 .product_img {
-    height: 250px;
+    width: auto;
+    max-height: 250px;
+    display: block;
+    margin: auto;
 }
 
 .card-body {
-    padding: 0%;
+    padding: 1%;
+    text-overflow: ellipsis;
 }
 
 .prix {
@@ -142,12 +156,12 @@
 .card-title {
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
-    font-size: large;
+    font-size: medium;
 }
 
 .more {
     color: rgb(14, 13, 13);
-    font-size: 1.8em;
+    font-size: 1.6em;
     font-weight: bold;
     text-decoration: solid;
 }
@@ -258,6 +272,9 @@
         top: 50%;
         transform: translate(0%, 50%);
     }
+    .advice {
+        font-size: 1.5em;
+    }
     .lorem {
         display: none;
     }
@@ -279,8 +296,10 @@
         font-size: 1.3em;
     }
     .product_img {
-        width: 130px;
+        width: auto;
         height: 150px;
+        display: block;
+        margin: auto;
     }
     .prix {
         font-size: large;

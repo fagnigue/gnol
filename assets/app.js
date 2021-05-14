@@ -13,6 +13,28 @@ import './styles/app.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'feather-icons/dist/feather.js';
+import $ from 'jquery';
 
+console.log("Javascript pass !");
 
-console.log("webpack encore works well !");
+// preview file in profil page
+var readURL = function(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('.profile-pic').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$(".file-upload").on('change', function() {
+    readURL(this);
+});
+
+$(".upload-button").on('click', function() {
+    $(".file-upload").click();
+    //console.log("le bouton passe !");
+});

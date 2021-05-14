@@ -23,27 +23,33 @@
 
         <div class="row justify-content-start mt-lg-0 mt-md-0 mt-sm-4 mt-4">
             <div class="col-lg-5 col-md-5 col-sm-11 col-11">
-                <p> <label class="product_name">{{ nom }}</label> <br>
-                    Bordeaux  |   Haut-Medoc <br>
+                <p> <label class="product_name">{{ product.label }}</label> <br>
+                     {{ product.label_desc }} <br>
                     <a class="btn btn-light mb-lg-0 mb-md-0 mb-sm-1 mb-1">MEILLEURE VENTE</a> <a class="btn btn-light"> MEILLEURE NOTE</a>
                 </p>
                 
-                <img src="{{ asset('images/product_vin.png') }}" class="product_img"></img>
+                <img src="{{ asset('uploads/product_image/'~product.image_url) }}" class="product_img" style="width: auto; display: block; margin: auto;">
             </div>
             <div class="col-lg-7 col-md-7 col-sm-11 col-11 div_spec">
                 
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-6 spec">Bouteille 75cl</div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-6 etend"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-6 spec">
+                        {% if category == 'Accessoire' %}
+                            Verre <font color="#f8b809">{{ product.bottle_type }}</font>
+                        {% else %}
+                            Bouteille {{ product.bottle_type }}
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-6 etend">Description</div>
                 </div>
                 <div class="row">
                     <div class="col-12 pt-4">
                         <p class="p_spec">
-                            PRIMEUR 1998<br>
-                            <font color="#f8b809">2500$</font><br>
-                            Vendu et Expédié par DHL
+                            Prix: <font color="#f8b809">{{ product.price | format_currency('EUR') }}</font><br>
+                            Vendu et Expédié par DHL <br>
+                            <button class="btn btn-warning">Ajouter au panier</button> <br>
+                            {{ product.description | raw }}   
                         </p>
-                        <button class="btn btn-warning">Ajouter au panier</button>
                     </div>
                 </div>
 

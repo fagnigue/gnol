@@ -4,16 +4,17 @@ namespace App\Controller\Admin;
 
 use App\Entity\Product;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 
 class ProductCrudController extends AbstractCrudController
 {
@@ -34,14 +35,13 @@ class ProductCrudController extends AbstractCrudController
                 ->setHelp('Entrez le nom du produit'),
             TextField::new('label_desc')
                 ->setHelp('Entrez la spécification du produit'),
-            TextField::new('bottle_type')
+            TextField::new('bottle_type', 'Capacité')
                 ->setHelp('Entrez la capacité de la bouteille en cl ex: 75cl'),
             AssociationField::new('souscategorie')
                 ->setHelp('Entrez la catégorie du produit'),
             IntegerField::new('quantity')
                 ->setHelp('Entrez la quantité de ce produit'),
-            MoneyField::new('price')
-                ->setCurrency('EUR')
+            NumberField::new('price')
                 ->setHelp('Entrez le prix de vente'),
             TextEditorField::new('description'),
         ];

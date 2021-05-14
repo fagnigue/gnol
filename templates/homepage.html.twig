@@ -39,7 +39,11 @@
                                                 impression. lorem est simplement un faux texte employé dans la 
                                                 composition et la mise en page avant impression.
                                             </p>
-                                            <a class="btn btn-warning  mt-md-5 mt-sm-3 mt-3  ml-md-3 ml-sm-3 ml-3" style="font-size: x-large;">Connexion</a>
+                                            {% if client %}
+                                                <label class="advice">Bon marché !</label>
+                                            {% else %}
+                                                <a class="btn btn-warning  mt-md-5 mt-sm-3 mt-3 ml-sm-3 ml-3" style="font-size: x-large;" href="/login">Connexion</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +69,11 @@
                                                 impression. lorem est simplement un faux texte employé dans la 
                                                 composition et la mise en page avant impression.
                                             </p>
-                                            <a class="btn btn-warning  mt-md-5 mt-sm-3 mt-3 ml-md-3 ml-sm-3 ml-3" style="font-size: x-large;">Connexion</a>
+                                            {% if client %}
+                                                <label class="advice">Consommez l'alcool avec modération !</label>
+                                            {% else %}
+                                                <a class="btn btn-warning  mt-md-5 mt-sm-3 mt-3 ml-sm-3 ml-3" style="font-size: x-large;" href="/login">Connexion</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +99,11 @@
                                                 impression. lorem est simplement un faux texte employé dans la 
                                                 composition et la mise en page avant impression.
                                             </p>
-                                            <a class="btn btn-warning mt-md-5 mt-sm-3 mt-3 ml-md-3 ml-sm-3 ml-3" style="font-size: x-large;">Connexion</a>
+                                            {% if client %}
+                                                <label class="advice">Bonne visite !</label>
+                                            {% else %}
+                                                <a class="btn btn-warning  mt-md-5 mt-sm-3 mt-3 ml-sm-3 ml-3" style="font-size: x-large;" href="/login">Connexion</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -144,6 +156,7 @@
         </div>
 
 
+
         <!--NOS VINS-->
         <div class="row mb-5">
             <div class="col-lg-12 col-md-12 col-sm-12">
@@ -178,11 +191,11 @@
 
                         <div class="card product_div">
 
-                            <img src="{{ asset('images/product_vin.png') }}" class="card-img-top product_img">
+                            <img src="{{ asset('uploads/product_image/'~v.image_url) }}" class="card-img-top product_img">
                             <div class="card-body">
                                 <label class="card-title">{{v.label}}</label>
-                                <p class="prix">{{ v.price }}</p>
-                                <a href="/products/vin/categorie/description/{{ v.label }}" class="stretched-link"></a>
+                                <p class="prix">{{ v.price | format_currency('EUR') }}</p>
+                                <a href="/products/Vin/description/{{ v.id }}" class="stretched-link"></a>
                             </div>
 
                         </div>
@@ -198,7 +211,7 @@
 
         <div class="row justify-content-center mt-1 mb-5">
             <div class="col-lg-3 col-md-6 col-sm-12" style="text-align: center;">
-                <a href="/products/vin" class="more link-dark">Voir plus</a>
+                <a href="/products/Vin" class="more link-dark">Voir plus</a>
             </div>
         </div>
 
@@ -238,11 +251,11 @@
                     {% for c in champagne %}
 
                         <div class="card product_div">
-                            <img src="{{ asset('images/boheme.png') }}" class="card-img-top product_img">
+                            <img src="{{ asset('uploads/product_image/'~c.image_url) }}" class="card-img-top product_img">
                             <div class="card-body">
                                 <label class="card-title">{{c.label}}</label>
-                                <p class="prix">{{ c.price }}</p>
-                                <a href="/products/champagne/categorie/description/Bohème" class="stretched-link"></a>
+                                <p class="prix">{{ c.price | format_currency('EUR') }}</p>
+                                <a href="/products/Champagne/description/{{ c.id }}" class="stretched-link"></a>
                             </div>
                         </div>
 
@@ -258,7 +271,7 @@
 
         <div class="row justify-content-center mt-1 mb-5">
             <div class="col-lg-3 col-md-6 col-sm-12" style="text-align: center;">
-                <a href="/products/champagne" class="more link-dark">Voir plus</a>
+                <a href="/products/Champagne" class="more link-dark">Voir plus</a>
             </div>
         </div>
 
@@ -297,11 +310,11 @@
                     {% for s in spiritueux %}
             
                     <div class="card product_div">
-                        <img src="{{ asset('images/spiritueux_.png') }}" class="card-img-top product_img">
+                        <img src="{{ asset('uploads/product_image/'~s.image_url) }}" class="card-img-top product_img">
                         <div class="card-body">
                             <label class="card-title">{{ s.label }}</label>
-                            <p class="prix">{{ s.price }}</p>
-                            <a href="/products/spiritueux/categorie/description/Jack" class="stretched-link"></a>
+                            <p class="prix">{{ s.price | format_currency('EUR') }}</p>
+                            <a href="/products/Champagne/description/{{ s.id }}" class="stretched-link"></a>
                         </div>
                     </div>
 
@@ -315,7 +328,7 @@
 
         <div class="row justify-content-center mt-1 mb-5">
             <div class="col-lg-3 col-md-6 col-sm-12" style="text-align: center;">
-                <a href="/products/spiritueux" class="more link-dark">Voir plus</a>
+                <a href="/products/Spiritueux" class="more link-dark">Voir plus</a>
             </div>
         </div>
 
@@ -354,7 +367,7 @@
 
     </div>
 
-    <div class="newsletter">
+    <div class="newsletter" id="newsletter">
         <div class="newsletter-transparence">
             <h4 class=" ml-lg-5 ml-md-5 ml-sm-2 ml-2">CONTACTEZ NOUS ICI</h4>
             <hr style="width: 100%;">

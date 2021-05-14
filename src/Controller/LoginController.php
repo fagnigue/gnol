@@ -2,8 +2,12 @@
 // src/Controller/LoginController.php
 namespace App\Controller;
 
+use DateTime;
+use DateInterval;
 use App\Entity\Client;
 use App\Repository\ClientRepository;
+use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,7 +21,7 @@ class LoginController extends AbstractController
      *@Route("/login", name="login_page"), methods={"POST"}
      *
      */
-    public function login(Request $request): Response
+    public function login(Request $request, ClientRepository $clientrepository):Response
     {
 
         $email = null;
@@ -25,6 +29,8 @@ class LoginController extends AbstractController
         $remember = null;
         $errormail = null;
         $errormdp = null;
+        $clientId = null;
+        $clientid = null;
         
         if (isset($_POST['submit'])) {
             $email = $request->request->get('email');
@@ -36,7 +42,9 @@ class LoginController extends AbstractController
 
             $entityManager = $this->getDoctrine()->getManager()->getRepository(Client::class);
             $client = $entityManager->findOneBy(['email' => strval($email)]);
-                
+
+            $query = $clientrepository->getOneClient($email);
+            $clientId = strval($query[0]['id']);
             
             if (!$client) {
                
@@ -49,13 +57,46 @@ class LoginController extends AbstractController
                 if ($getpassword!=strval($password)) {
                     $errormdp = 'mot de passe incorrect';
                 } else {
-                    return $this->render('homepage.html.twig');
-                    /*return new RedirectResponse($this->urlGenerator->generate('home_page'));*/
+
+                    $query = $clientrepository->getOneClientById($clientId);
+                    $ArrayForSession = $query[0];
+                    $session = new Session();
+                    $session->set('client_info', $ArrayForSession);
+
+                    if ($remember == 1) {
+
+                        $response = new Response();
+                        $expires = time() + 36000; //7884000 (3 mois)
+                        $cookie = Cookie::create('gnol_user_id', $clientId, $expires);
+                        $response->headers->setCookie($cookie);
+                        $response->send();
+
+                    }
+                    return $this->redirectToRoute('home_page');
                 }
             }
         }
 
-        return $this->render('loginpage.html.twig', ['errormail'=>$errormail, 'errormdp'=>$errormdp, 'email'=>$email]);
+        return $this->render('loginpage.html.twig', [
+            'errormail'=>$errormail, 
+            'errormdp'=>$errormdp, 
+            'email'=>$email,
+            'id'=>$clientid
+            ]);
+    }
+
+    /**
+     * @Route("/logout")
+     */
+    public function logout()
+    {
+        $response = new Response();
+        $response->headers->clearCookie('gnol_user_id');
+        $response->send();
+
+        $session = new Session();
+        $session->clear();
+        return $this->redirectToRoute('home_page');
     }
 
     /**

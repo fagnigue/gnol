@@ -40,10 +40,11 @@
 
                     {% block categorie_content %}
                         <h1>Catégories</h1>
-                        <p>Japonais</p>
-                        <p>Ecossais</p>
-                        <p>Anglais</p>
-                        <p>Autres</p>
+                        <p>
+                        {% for s in sous_category %}
+                            <a href="/products/{{ category }}/{{ s.label }}" class="list_a">{{ s.label }}</a><br>
+                        {% endfor %}
+                        </p>
                     {% endblock %}
 
 
@@ -56,18 +57,18 @@
             <div class="row">
 
 
-                    {% for s in spiritueux %}
+                    {% for product in products %}
 
                         {% block list_product %}
 
                         <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-3">
                     
                             <div class="card product_div">
-                                <img src="{{ asset('images/spiritueux_.png') }}" class="card-img-top product_img">
+                                <img src="{{ asset('uploads/product_image/'~product.image_url) }}" class="card-img-top product_img">
                                 <div class="card-body">
-                                    <label class="card-title">{{ s.label }}</label>
-                                    <p class="prix">{{ s.price }}</p>
-                                    <a href="/products/spiritueux/categorie/description/jack" class="stretched-link"></a>
+                                    <label class="card-title">{{ product.label }}</label>
+                                    <p class="prix">{{ product.price }}</p>
+                                    <a href="/products/{{ category }}/description/{{ product.id }}" class="stretched-link"></a>
                                 </div>
                             </div>
 

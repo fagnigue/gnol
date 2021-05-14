@@ -16,7 +16,7 @@
     font-size: 1.8em;
     font-weight: 600;
     color: #f8b809;
-    line-height: 0.5em;
+    line-height: 1em;
 }
 
 .transparence {
@@ -31,7 +31,9 @@
 
 .product_img {
     height: 290px;
-    width: 15rem;
+    width: auto;
+    display: block;
+    margin: auto;
 }
 
 .div_spec {

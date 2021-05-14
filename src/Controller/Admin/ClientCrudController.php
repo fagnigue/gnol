@@ -34,6 +34,10 @@ class ClientCrudController extends AbstractCrudController
                 ->setHelp('Entrez le numéro de téléphone'),
             TextField::new('password', 'Mot de passe')
                 ->setHelp('Entrez le mot de passe'),
+            TextField::new('genre')
+                ->setHelp('Entrez le genre'),
+            TextField::new('adresse')
+                ->setHelp("Entrez l'adresse"),
             Field::new('photoFile', 'Photo de profil')
                 ->setFormType(VichImageType::class)
                 ->onlyOnForms(),

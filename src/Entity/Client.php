@@ -72,6 +72,21 @@ class Client
      */
     private $commands;
 
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $genre;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $info_sup;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -228,6 +243,42 @@ class Client
                 $command->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getGenre(): ?string
+    {
+        return $this->genre;
+    }
+
+    public function setGenre(?string $genre): self
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getInfoSup(): ?string
+    {
+        return $this->info_sup;
+    }
+
+    public function setInfoSup(?string $info_sup): self
+    {
+        $this->info_sup = $info_sup;
 
         return $this;
     }

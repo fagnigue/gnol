@@ -31,13 +31,22 @@
                         <div class="col-12">
                             <div class="profil bg-light p-lg-2 p-md-2 p-sm-3 p-3">
                                 <label>ADRESSE</label>
-                                <a>MODIFIER</a>
+                                <a href="/profil" class="modifier">MODIFIER</a>
                                 <hr>
                                 <p class="ml-lg-5 ml-md-5 ml-sm-3 ml-sm-3">
+                                 
+                                {% if client %}
+                                
                                     {{client['lastname']}} <br>
                                     {{client['firstname']}} <br>
                                     {{client['adresse']}}<br>
                                     {{client['telephone']}}
+
+                                {% else %}
+
+                                   <a href="/login" class="btn btn-warning profil-redirect">Connexion</a>
+                                
+                                {% endif %}
                                 </p>
 
                             </div>
@@ -136,21 +145,26 @@
 
                     <div class="panier bg-light mr-2 p-1">
                         <div class="title_panier"><font color="#f8b809">VOTRE COMMANDE</font></div>
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="{{ asset('images/product_vin.png') }}" class="img_panier">
+                        {% for product in cart %}
+
+                            <div class="row mb-lg-3">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-4" style="height: 100px;">
+                                    <img src="{{ asset('uploads/product_image/'~product.image_url) }}" class="img_panier">
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-8 list_product">
+                                    <p>
+                                        {{ product.label }} <br>
+                                        {{ product.label_desc }} <br>
+                                    <p>
+                                    <p>
+                                        <label class="prix">{{ product.sous_total }}</label><br>
+                                        <label>Qte {{ product.quantity_wanted }}</label>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="col-8 list_product">
-                                <p>
-                                    Vendange <br>
-                                    Bordeaux | Haut-Medoc <br>
-                                <p>
-                                <p>
-                                    <label class="prix">2500$</label><br>
-                                    <label>Qte 1</label>
-                                </p>
-                            </div>
-                        </div>
+
+                        {% endfor %}
+                        
 
                         <div class="row">
                             <div class="col-12">
@@ -161,7 +175,7 @@
                                         <label>Total-partiel</label>
                                     </div>
                                      <div class="col-3">
-                                        <label class="prix">2500$</label>
+                                        <label class="prix">{{ total_cart }}</label>
                                     </div>
                                 </div>
 

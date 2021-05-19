@@ -3,10 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Client;
+use Symfony\Component\Mime\Address;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -17,7 +21,7 @@ class SigninController extends AbstractController
      * @Route("/signin"), methods={"POST"}
      * 
      */
-    public function signin(Request $request): Response
+    public function signin(Request $request, MailerInterface $mailer): Response
     {
         $nom = null;
         $prenom = null;
@@ -26,6 +30,7 @@ class SigninController extends AbstractController
         $password = null;
         $conf_password = null;
         $alert = null;
+        $errormdp = null;
         $error = null;
 
 
@@ -42,30 +47,59 @@ class SigninController extends AbstractController
         if ($password == $conf_password && $nom!=null && $prenom!=null && $telephone!=null && $email!=null && $password!=null && $conf_password!=null) {
 
             $entityManager = $this->getDoctrine()->getManager();
+            $client = $entityManager->getRepository(Client::class)->findOneBy(['email' => strval($email)]);
 
-            $client = new Client();
-            $client->setFirstname(strval($prenom));
-            $client->setLastname(strval($nom));
-            $client->setTelephone(strval($telephone));
-            $client->setEmail(strval($email));
-            $client->setPassword(strval($password));
+            if (!$client) {
+                
+                $client = new Client();
+                $client->setFirstname(strval($prenom));
+                $client->setLastname(strval($nom));
+                $client->setTelephone(strval($telephone));
+                $client->setEmail(strval($email));
+                $client->setPassword(strval($password));
 
-            $entityManager->persist($client);
+                $entityManager->persist($client);
 
-            $entityManager->flush();
+                $entityManager->flush();
 
-            if ($client->getId()) {
-                /*return $this->render('loginpage.html.twig');*/
-                return new RedirectResponse($this->urlGenerator->generate('login_page'));
+                if ($client->getId()) {
+                    
+
+                    $email_ = (new TemplatedEmail())
+                        ->from('fabien@example.com')
+                        ->to(new Address(strval($email)))
+                        ->subject('Inscription Gnol')
+
+                        // path of the Twig template to render
+                        ->htmlTemplate('emails/signin.html.twig')
+
+                        ->context([
+                            'nom' => $nom,
+                            'prenom' => $prenom,
+                        ]);
+
+                    $mailer->send($email_);
+
+
+                    //return new RedirectResponse($this->urlGenerator->generate('login_page'));
+                    return $this->redirectToRoute('login_page');
+                } else {
+                    $alert = "enregitrement échoué";
+                }
+
             } else {
-                $alert = "enregitrement échoué";
+                $error = "un utilisateur existe déjà avec cet email !";
             }
 
         } else {
-            $error = "les mots de passe ne correspondent pas";
+            $errormdp = "les mots de passe ne correspondent pas";
         }
         
 
-    return $this->render('signinpage.html.twig', ['alert'=>$alert, 'error'=>$error]);
+    return $this->render('signinpage.html.twig', [
+        'alert'=>$alert,
+        'errormdp'=>$errormdp, 
+        'error'=>$error
+        ]);
     }
 }

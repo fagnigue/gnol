@@ -85,6 +85,7 @@ class ProductRepository extends ServiceEntityRepository
                 product.label,
                 product.label_desc,
                 product.price,
+                product.quantity,
                 product.bottle_type,
                 product.description,
                 product.image_url

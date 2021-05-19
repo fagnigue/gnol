@@ -16,30 +16,188 @@
 
 
 
+{% if cart %}
 
-<div class="container body pt-5">
+{% set total = 0 %}
+    
+<div class="principal">
+    <div class="transparence">
+        {{ dump(cart) }}
+        {{ dump(total_cart) }}
+        <div class="container-fluid">
 
-    <div class="row title_row justify-content-center mb-5">
-        <div class="col-lg-3 col-md-3 col-sm-8 col-8 title_col">
-                <div class="title_div">
-                <p class="title">Mon panier</p>
+            <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center justify-content-center">
+                <div class="col-lg-5 col-md-7 col-sm-12 col-12">
+                        <div class="title_div">
+                            <label class="title">Mon panier ({{ cart|length }} articles)</label>
+                        </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center justify-content-center">
+                <div class="col-lg-11 col-md-11 col-sm-12 col-12">
+                    <div class="container-fluid cart_product">
+
+                        <div class="row mb-lg-3 mb-md-3">
+
+                            <div class="col-lg-1 d-flex">
+                                <div class="m-auto">
+                                    ARTICLES
+                                </div>
+                            </div>
+                            <div class="col-lg-5 d-flex">
+                                <div class="m-auto">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-2 d-flex">
+                                <div class="m-auto">
+                                    QUANTITÉ
+                                </div>
+                            </div>
+                            <div class="col-lg-2 d-flex">
+                                <div class="m-auto">
+                                    PRIX UNITAIRE
+                                </div>
+                            </div>
+                            <div class="col-lg-2 d-flex">
+                                <div class="m-auto">
+                                    SOUS-TOTAL
+                                </div>
+                            </div>
+
+                        </div>
+
+                        {% for key, product in cart %}
+                            
+                            <div class="row mb-lg-3 mb-md-3 bg-light">
+                                <div class="col-lg-1 image">
+                                    <div>
+                                        <img src="{{ asset('uploads/product_image/'~product.image_url) }}" style="display: block; margin: auto; height: 100%; width: auto;">
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 info">
+                                    <div>
+                                        <p>
+                                            <label style="color: rgb(94, 92, 92); font-size: medium;">{{ product.label_desc }}</label> <br>
+                                            <label style="color: black; font-size: 0.8em; font-weight: bold">{{ product.label }}</label> <br>
+                                        </p>
+                                        <a href="/panier/drop/{{key}}" style="color: red; font-size: medium;"><i data-feather="trash-2"></i> Supprimer</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 quantity">
+                                    <div>
+                                        <a href="/panier/product_quantity/moins/{{key}}" class="submit-minus">
+                                            <i data-feather="minus" id="moins" style="color: black; margin-right: 10px;"></i>
+                                        </a>
+                                            {{product.quantity_wanted}}
+                                        <a href="/panier/product_quantity/plus/{{key}}" class="submit-plus">
+                                            <i data-feather="plus" id="plus"  style="color: black; margin-left: 10px;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 prix">
+                                    <div>
+                                        <label>{{product.price}}</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 sous-total">
+                                    <div>
+                                        <label>{{product.sous_total}}</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+
+                        <div class="row mb-lg-3 mb-md-3">
+
+                            <div class="col-lg-1 d-flex">
+                                <div class="m-auto">
+        
+                                </div>
+                            </div>
+                            <div class="col-lg-5 d-flex">
+                                <div class="m-auto">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-2 d-flex">
+                                <div class="m-auto">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-2 d-flex">
+                                <div class="m-auto">
+                                    TOTAL:
+                                </div>
+                            </div>
+                            <div class="col-lg-2 d-flex">
+                                <div class="m-auto">
+                                    {% for product in cart %}
+                                        {% set total = total + product.sous_total %}
+                                    {% endfor %}
+                                    
+                                    <font color="#ffbb00" size="5px">{{total}}<font>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-lg-end justify-content-md-end mt-lg-5 mt-md-5">
+                
+                    <div class="col-lg-2 col-md-2">
+                        <form method="post">
+                            <button type="submit" class="btn btn-outline-danger" name="clear">Vider le panier</button>
+                        </form>
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                        <a class="btn btn-dark"><i data-feather="arrow-left"></i> Continuer mes achats</a>
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                        <form method="post">
+                            <a href="/command" class="btn btn-warning">Passer à la commande</a>
+                        </form>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+    
+{% else %}
+    
+
+    <div class="container body pt-5">
+
+        <div class="row title_row justify-content-center mb-5">
+            <div class="col-lg-3 col-md-3 col-sm-8 col-8 title_col">
+                    <div class="title_div">
+                    <p class="title">Mon panier</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="row content_row">
-        <div class="col">
-            <p><i data-feather="alert-circle"></i> Votre panier est vide</p>
+        <div class="row content_row">
+            <div class="col">
+                <p><i data-feather="alert-circle"></i> Votre panier est vide</p>
+            </div>
         </div>
-    </div>
 
-    <div class="row justify-content-center mt-5">
-        <div class="col-3">
-            <a href="/" class="btn btn-dark"><i data-feather="arrow-left"></i> Continuer mes achats</a>
+        <div class="row justify-content-center mt-5">
+            <div class="col-3">
+                <a href="/" class="btn btn-dark"><i data-feather="arrow-left"></i> Continuer mes achats</a>
+            </div>
         </div>
-    </div>
 
-</div>
+    </div>
+    
+{% endif %}
+
 
 
 

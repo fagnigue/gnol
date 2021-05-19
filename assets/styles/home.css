@@ -118,6 +118,7 @@
     width: 100%;
     height: auto;
     overflow-x: scroll;
+    overflow-y: hidden;
     white-space: nowrap;
 }
 
@@ -127,23 +128,29 @@
 
 .product_div {
     width: 13.6rem;
+    height: 100%;
     display: inline-block;
+    white-space: normal;
 }
 
 .product_div:hover {
     border: 3px dashed rgba(255, 187, 0, 0.616);
 }
 
+.image-div {
+    height: 250px;
+    display: block;
+}
+
 .product_img {
     width: auto;
-    max-height: 250px;
-    display: block;
+    height: 100%;
     margin: auto;
+    display: block;
 }
 
 .card-body {
     padding: 1%;
-    text-overflow: ellipsis;
 }
 
 .prix {
@@ -295,17 +302,37 @@
     .vin-title {
         font-size: 1.3em;
     }
+    .product_div {
+        width: 13.6rem;
+        height: 100%;
+        display: inline-block;
+        white-space: normal;
+    }
+    .product-div {
+        width: 100%;
+        height: auto;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        padding: auto;
+    }
+    .image-div {
+        height: 150px;
+        display: block;
+    }
     .product_img {
         width: auto;
-        height: 150px;
+        height: 80%;
         display: block;
         margin: auto;
     }
+    .card-body {
+        line-height: 1;
+    }
     .prix {
-        font-size: large;
+        font-size: medium;
     }
     .card-title {
-        font-size: medium;
+        font-size: small;
     }
     .list_product {
         overflow-x: scroll;

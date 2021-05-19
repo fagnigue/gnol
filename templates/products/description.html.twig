@@ -20,7 +20,6 @@
 <div class="body">
 
     <div class="transparence">
-
         <div class="row justify-content-start mt-lg-0 mt-md-0 mt-sm-4 mt-4">
             <div class="col-lg-5 col-md-5 col-sm-11 col-11">
                 <p> <label class="product_name">{{ product.label }}</label> <br>
@@ -47,7 +46,10 @@
                         <p class="p_spec">
                             Prix: <font color="#f8b809">{{ product.price | format_currency('EUR') }}</font><br>
                             Vendu et Expédié par DHL <br>
-                            <button class="btn btn-warning">Ajouter au panier</button> <br>
+                            <form method="post">
+                                <input type="hidden" value="{{product.id}}" name="product_id">
+                                <button type="submit" class="btn btn-warning" name="add">Ajouter au panier</button>
+                            <form> <br>
                             {{ product.description | raw }}   
                         </p>
                     </div>

@@ -21,7 +21,6 @@
 
 #img_ {
     height: 600px;
-    display: none;
 }
 
 #mail,
@@ -74,6 +73,10 @@ a:hover {
     border-color: #f2b100;
 }
 
+.form-text {
+    font-size: large;
+}
+
 .ssm {
     font-size: 13px;
 }
@@ -83,11 +86,17 @@ a:hover {
         display: flex;
         min-height: 100vh;
     }
+    .form-text {
+        font-size: medium;
+    }
 }
 
 @media (max-width: 1024px) {
     .principal {
         display: flex;
         min-height: 100vh;
+    }
+    .form-text {
+        font-size: large;
     }
 }

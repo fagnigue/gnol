@@ -54,7 +54,7 @@ class ProfilController extends AbstractController
             $client->setLastname(strval($lastname));
             $client->setEmail(strval($email));
             $client->setTelephone(strval($telephone));
-            $client->setpassword(strval($password));
+            $client->setPassword(strval($password));
             $client->setAdresse(strval($adresse));
             $client->setInfoSup(strval($info_sup));
             $client->setGenre(strval($genre));

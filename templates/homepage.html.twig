@@ -191,10 +191,15 @@
 
                         <div class="card product_div">
 
-                            <img src="{{ asset('uploads/product_image/'~v.image_url) }}" class="card-img-top product_img">
+                            <div class="image-div">
+                                <img src="{{ asset('uploads/product_image/'~v.image_url) }}" class="card-img-top product_img">
+                            </div>
+
                             <div class="card-body">
+                                <p>
                                 <label class="card-title">{{v.label}}</label>
-                                <p class="prix">{{ v.price | format_currency('EUR') }}</p>
+                                </p>
+                                <label class="prix">{{ v.price | format_currency('EUR') }}</label>
                                 <a href="/products/Vin/description/{{ v.id }}" class="stretched-link"></a>
                             </div>
 

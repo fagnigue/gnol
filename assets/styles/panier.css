@@ -2,6 +2,10 @@
     min-height: 400px;
 }
 
+.title_div {
+    text-align: center;
+}
+
 .title {
     color: #ffbb00;
     font-size: xx-large;
@@ -13,6 +17,78 @@
     background-color: azure;
     font-weight: 500;
     font-family: 'Times New Roman', Times, serif;
+}
+
+
+/* POUR LE PANIER PLEIN */
+
+.principal {
+    min-height: 400px;
+    width: 100%;
+    background-image: url('../images/comptoir.png');
+    /*background-size: cover;*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 1em;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.transparence {
+    background-color: rgba(7, 7, 7, 0.761);
+    min-height: 400px;
+    width: 100%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.cart_product {
+    width: 100%;
+}
+
+.image,
+.info,
+.quantity,
+.prix,
+.sous-total {
+    height: 100px;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-right: 1px solid gray;
+    display: flex;
+}
+
+.info div p {
+    line-height: 0.5;
+    padding-top: 5%;
+}
+
+.image div {
+    margin: auto;
+    height: 100%;
+    width: auto;
+    /*border: 2px solid black;*/
+}
+
+.prix div,
+.sous-total div,
+.quantity div {
+    margin: auto;
+}
+
+.quantity,
+.prix {
+    color: rgb(173, 171, 171);
+}
+
+.sous-total {
+    color: #ffbb00;
+}
+
+.quantity div input {
+    width: 100%;
 }
 
 @media (max-width: 576px) {

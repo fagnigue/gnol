@@ -31,8 +31,12 @@
     color: rgb(111, 112, 112);
 }
 
-.profil a {
+.profil .modifier {
     float: right;
+}
+
+.profil-redirect {
+    float: none;
 }
 
 .list_product p {
@@ -54,8 +58,10 @@
 }
 
 .img_panier {
-    width: 90px;
-    height: 100px;
+    display: block;
+    width: auto;
+    height: 100%;
+    margin: auto;
 }
 
 .prix {

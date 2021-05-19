@@ -38,3 +38,11 @@ $(".upload-button").on('click', function() {
     $(".file-upload").click();
     //console.log("le bouton passe !");
 });
+
+$("#moins").on('click', function() {
+    $('.submit-minus').find('a').trigger('click');
+});
+
+$("#plus").on('click', function() {
+    $('.submit-plus').find('a').trigger('click');
+});

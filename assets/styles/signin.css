@@ -26,6 +26,8 @@
 #mail,
 #telephone,
 #mdp,
+#pays,
+#pays>option,
 #nom,
 #prenom,
 #conf-mdp {
@@ -58,6 +60,7 @@ a:hover {
 .mail:hover,
 .telephone:hover,
 .mdp:hover,
+.pays:hover,
 .nom:hover,
 .prenom:hover,
 .conf-mdp:hover {
@@ -67,6 +70,7 @@ a:hover {
 .mail:hover #mail,
 .telephone:hover #telephone,
 .mdp:hover #mdp,
+.pays:hover #pays,
 .nom:hover #nom,
 .prenom:hover #prenom,
 .conf-mdp:hover #conf-mdp {

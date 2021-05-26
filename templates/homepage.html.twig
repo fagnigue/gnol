@@ -123,8 +123,6 @@
 
     </div>
     <div class="container-fluid">
-
-
         <div class="row">
             <div class="col-12">
 
@@ -196,10 +194,21 @@
                             </div>
 
                             <div class="card-body">
-                                <p>
-                                <label class="card-title">{{v.label}}</label>
-                                </p>
-                                <label class="prix">{{ v.price | format_currency('EUR') }}</label>
+                                <div class="card-title">
+                                    {{v.label}}
+                                </div>
+                                
+                                <label class="prix">
+                                    {% if geolocation.country_code == 'FR'%}
+                                        {{ v.price | format_currency(geolocation.currency_code) }}
+                                    {% elseif geolocation.country_code == 'CI' %}
+                                        {% set price = v.price * 655.85 %}
+                                        {{ price | format_currency(geolocation.currency_code, locale="CI") }}
+                                    {% else %}
+                                        {{ v.price | format_currency('USD') }}
+                                    {% endif %}
+                                    
+                                </label>
                                 <a href="/products/Vin/description/{{ v.id }}" class="stretched-link"></a>
                             </div>
 
@@ -259,7 +268,16 @@
                             <img src="{{ asset('uploads/product_image/'~c.image_url) }}" class="card-img-top product_img">
                             <div class="card-body">
                                 <label class="card-title">{{c.label}}</label>
-                                <p class="prix">{{ c.price | format_currency('EUR') }}</p>
+                                <p class="prix">
+                                {% if geolocation.country_code == 'FR'%}
+                                    {{ c.price | format_currency(geolocation.currency_code) }}
+                                {% elseif geolocation.country_code == 'CI' %}
+                                    {% set price = c.price * 655.85 %}
+                                    {{ price | format_currency(geolocation.currency_code, locale="CI") }}
+                                {% else %}
+                                    {{ c.price | format_currency('USD') }}
+                                {% endif %}
+                                </p>
                                 <a href="/products/Champagne/description/{{ c.id }}" class="stretched-link"></a>
                             </div>
                         </div>
@@ -318,7 +336,16 @@
                         <img src="{{ asset('uploads/product_image/'~s.image_url) }}" class="card-img-top product_img">
                         <div class="card-body">
                             <label class="card-title">{{ s.label }}</label>
-                            <p class="prix">{{ s.price | format_currency('EUR') }}</p>
+                            <p class="prix">
+                                {% if geolocation.country_code == 'FR'%}
+                                    {{ s.price | format_currency(geolocation.currency_code) }}
+                                {% elseif geolocation.country_code == 'CI' %}
+                                    {% set price = s.price * 655.85 %}
+                                    {{ price | format_currency(geolocation.currency_code, locale="CI") }}
+                                {% else %}
+                                    {{ s.price | format_currency('USD') }}
+                                {% endif %}
+                            </p>
                             <a href="/products/Champagne/description/{{ s.id }}" class="stretched-link"></a>
                         </div>
                     </div>

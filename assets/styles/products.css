@@ -77,9 +77,13 @@
 .product_img {
     width: auto;
     max-width: 100%;
-    max-height: 250px;
+    height: 100%;
     display: block;
     margin: auto;
+}
+
+.product_img_div {
+    height: 250px;
 }
 
 .card-body {
@@ -168,23 +172,35 @@
     }
     .product_img {
         width: auto;
-        height: 150px;
+        height: 100%;
         display: block;
         margin: auto;
     }
+    .product_img_div {
+        height: 150px;
+    }
     .prix {
-        font-size: large;
+        font-size: small;
     }
     .card-title {
-        font-size: large;
+        font-size: small;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 5px;
     }
     .product_div {
         width: 131px;
         display: block;
         margin: auto;
+        white-space: normal;
     }
     .card-body {
         padding: 1%;
+        overflow: auto;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         /*line-height: 100%;*/
     }
 }

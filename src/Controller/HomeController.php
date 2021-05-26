@@ -24,13 +24,27 @@ class HomeController extends AbstractController
     public function home(ProductRepository $productRepository, ClientRepository $clientrepository, Request $request): Response
     {
         $user_id = $request->cookies->get('gnol_user_id');
+        $session = new Session();
 
         if ($user_id) {
+
             $query = $clientrepository->getOneClientById($user_id);
             $ArrayForSession = $query[0];
-                    $session = new Session();
-                    $session->set('client_info', $ArrayForSession);
+            $session->set('client_info', $ArrayForSession);
+
         }
+
+        // GET GEOLOCATION
+        $ip = $_SERVER['REMOTE_ADDR'];
+
+        $ch = curl_init('http://free.ipwhois.io/json/?objects=country_code,currency_code,currency');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $json = curl_exec($ch);
+        curl_close($ch);
+
+        // Decode JSON response
+        $ipwhois_result = json_decode($json, true);
+        $session->set('geolocation', $ipwhois_result);
 
 
         $vin = $productRepository->getProductByCategory('Vin');

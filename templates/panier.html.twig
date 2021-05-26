@@ -22,11 +22,8 @@
     
 <div class="principal">
     <div class="transparence">
-        {{ dump(cart) }}
-        {{ dump(total_cart) }}
         <div class="container-fluid">
-
-            <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center justify-content-center">
+            <div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center justify-content-center pt-sm-5 pt-5">
                 <div class="col-lg-5 col-md-7 col-sm-12 col-12">
                         <div class="title_div">
                             <label class="title">Mon panier ({{ cart|length }} articles)</label>
@@ -38,7 +35,7 @@
                 <div class="col-lg-11 col-md-11 col-sm-12 col-12">
                     <div class="container-fluid cart_product">
 
-                        <div class="row mb-lg-3 mb-md-3">
+                        <div class="row mb-lg-3 mb-md-3 d-sm-none d-none">
 
                             <div class="col-lg-1 d-flex">
                                 <div class="m-auto">
@@ -71,21 +68,32 @@
                         {% for key, product in cart %}
                             
                             <div class="row mb-lg-3 mb-md-3 bg-light">
-                                <div class="col-lg-1 image">
+                                <div class="col-lg-1 col-md-1 col-sm-3 col-3 image">
                                     <div>
-                                        <img src="{{ asset('uploads/product_image/'~product.image_url) }}" style="display: block; margin: auto; height: 100%; width: auto;">
+                                        <img src="{{ asset('uploads/product_image/'~product.image_url) }}" style="display: block; margin: auto; height: 100%; width: auto; max-width: 100%;">
                                     </div>
                                 </div>
-                                <div class="col-lg-5 info">
-                                    <div>
+                                <div class="col-lg-5 col-md-5 col-sm-9 col-9 info">
+                                    <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                         <p>
                                             <label style="color: rgb(94, 92, 92); font-size: medium;">{{ product.label_desc }}</label> <br>
                                             <label style="color: black; font-size: 0.8em; font-weight: bold">{{ product.label }}</label> <br>
+                                            <label style="color: gray; font-size: 0.8em; font-weight: bold" class="d-lg-none d-md-none d-sm-block d-block">
+                                                {% if geolocation.country_code == 'FR'%}
+                                                    {{ product.price | format_currency(geolocation.currency_code) }}
+                                                {% elseif geolocation.country_code == 'CI' %}
+                                                    {% set price = product.price * 655.85 %}
+                                                    {{ price | format_currency(geolocation.currency_code, locale="CI") }}
+                                                {% else %}
+                                                    {{ product.price | format_currency('USD') }}
+                                                {% endif %}
+                                            </label>
+                                            <a href="/panier/drop/{{key}}" style="color: red; font-size: medium;"><i data-feather="trash-2"></i> Supprimer</a>
+
                                         </p>
-                                        <a href="/panier/drop/{{key}}" style="color: red; font-size: medium;"><i data-feather="trash-2"></i> Supprimer</a>
                                     </div>
                                 </div>
-                                <div class="col-lg-2 quantity">
+                                <div class="col-lg-2 col-md-2 col-sm-6 col-6 quantity">
                                     <div>
                                         <a href="/panier/product_quantity/moins/{{key}}" class="submit-minus">
                                             <i data-feather="minus" id="moins" style="color: black; margin-right: 10px;"></i>
@@ -96,14 +104,32 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-lg-2 prix">
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-3 prix d-lg-flex d-md-flex d-sm-none d-none">
                                     <div>
-                                        <label>{{product.price}}</label>
+                                        <label>
+                                            {% if geolocation.country_code == 'FR'%}
+                                                {{ product.price | format_currency(geolocation.currency_code) }}
+                                            {% elseif geolocation.country_code == 'CI' %}
+                                                {% set price = product.price * 655.85 %}
+                                                {{ price | format_currency(geolocation.currency_code, locale="CI") }}
+                                            {% else %}
+                                                {{ product.price | format_currency('USD') }}
+                                            {% endif %}
+                                        </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-2 sous-total">
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-6 sous-total">
                                     <div>
-                                        <label>{{product.sous_total}}</label>
+                                        <label>
+                                            {% if geolocation.country_code == 'FR'%}
+                                                {{ product.sous_total | format_currency(geolocation.currency_code) }}
+                                            {% elseif geolocation.country_code == 'CI' %}
+                                                {% set price = product.sous_total * 655.85 %}
+                                                {{ price | format_currency(geolocation.currency_code, locale="CI") }}
+                                            {% else %}
+                                                {{ product.sous_total | format_currency('USD') }}
+                                            {% endif %}
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +164,15 @@
                                         {% set total = total + product.sous_total %}
                                     {% endfor %}
                                     
-                                    <font color="#ffbb00" size="5px">{{total}}<font>
+                                    <font color="#ffbb00" size="5px">
+                                                
+                                        {% if geolocation.country_code == 'CI' %}
+                                            {% set price = total * 655.85 %}
+                                            {{ price | format_currency(geolocation.currency_code, locale="CI") }}
+                                        {% else %}
+                                            {{ total | format_currency(geolocation.currency_code) }}
+                                        {% endif %}
+                                    <font>
                                 </div>
                             </div>
 
@@ -148,19 +182,19 @@
                 </div>
             </div>
 
-            <div class="row justify-content-lg-end justify-content-md-end mt-lg-5 mt-md-5">
+            <div class="row justify-content-lg-end justify-content-md-end justify-content-sm-around justify-content-around mt-lg-5 mt-md-5">
                 
-                    <div class="col-lg-2 col-md-2">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-12 mb-sm-2 mb-2">
                         <form method="post">
-                            <button type="submit" class="btn btn-outline-danger" name="clear">Vider le panier</button>
+                            <button type="submit" class="btn btn-outline-danger bg-light" name="clear" style="width: 100%">Vider le panier</button>
                         </form>
                     </div>
-                    <div class="col-lg-2 col-md-2">
-                        <a class="btn btn-dark"><i data-feather="arrow-left"></i> Continuer mes achats</a>
+                    <div class="col-lg-2 col-md-2 col-sm-11 col-11 mb-sm-2 mb-2">
+                        <a class="btn btn-dark" style="width: 100%"><i data-feather="arrow-left"></i> Continuer mes achats</a>
                     </div>
-                    <div class="col-lg-2 col-md-2">
+                    <div class="col-lg-2 col-md-2 col-sm-10 col-10" style="width: 100%">
                         <form method="post">
-                            <a href="/command" class="btn btn-warning">Passer à la commande</a>
+                            <a href="/command" class="btn btn-warning" style="width: 100%">Passer à la commande</a>
                         </form>
                     </div>
             </div>

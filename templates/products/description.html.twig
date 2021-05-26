@@ -12,7 +12,6 @@
 
 
 {% block body %}
-    
 
 
 
@@ -20,6 +19,8 @@
 <div class="body">
 
     <div class="transparence">
+    
+        <div id="msg" role="alert" style="position:fixed; z-index: 2; width: auto;"></div>
         <div class="row justify-content-start mt-lg-0 mt-md-0 mt-sm-4 mt-4">
             <div class="col-lg-5 col-md-5 col-sm-11 col-11">
                 <p> <label class="product_name">{{ product.label }}</label> <br>
@@ -32,24 +33,38 @@
             <div class="col-lg-7 col-md-7 col-sm-11 col-11 div_spec">
                 
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-6 spec">
+                    <div class="col-lg-3 col-md-3 col-sm-8 col-8 spec">
                         {% if category == 'Accessoire' %}
                             Verre <font color="#f8b809">{{ product.bottle_type }}</font>
                         {% else %}
                             Bouteille {{ product.bottle_type }}
                         {% endif %}
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-6 etend">Description</div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-4 etend"></div>
                 </div>
                 <div class="row">
                     <div class="col-12 pt-4">
                         <p class="p_spec">
-                            Prix: <font color="#f8b809">{{ product.price | format_currency('EUR') }}</font><br>
+                            Prix: <font color="#f8b809">
+                                {% if geolocation.country_code == 'FR'%}
+                                        {{ product.price | format_currency(geolocation.currency_code) }}
+                                {% elseif geolocation.country_code == 'CI' %}
+                                    {% set price = product.price * 655.85 %}
+                                    {{ price | format_currency(geolocation.currency_code, locale="CI") }}
+                                {% else %}
+                                    {{ product.price | format_currency('USD') }}
+                                {% endif %}
+                            </font><br>
                             Vendu et Expédié par DHL <br>
-                            <form method="post">
-                                <input type="hidden" value="{{product.id}}" name="product_id">
-                                <button type="submit" class="btn btn-warning" name="add">Ajouter au panier</button>
-                            <form> <br>
+                            <form name="add_product">
+                                <input type="hidden" value="{{product.id}}" name="product_id" id="product_id">
+                                {% if product.label in product_list %}
+                                    <input type="button" class="btn btn-warning" id="add" value="Ajouter au panier" disabled>
+                                {% else %}
+                                    <input type="button" class="btn btn-warning mb-lg-3 mb-md-3 mb-sm-3 mb-3" id="add" value="Ajouter au panier">
+                                {% endif %}
+                            <form>
+                            <h2>Description</h2>
                             {{ product.description | raw }}   
                         </p>
                     </div>

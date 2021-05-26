@@ -64,7 +64,9 @@
                         <div class="col-lg-4 col-md-4 col-sm-6 col-6 mb-3">
                     
                             <div class="card product_div">
-                                <img src="{{ asset('uploads/product_image/'~product.image_url) }}" class="card-img-top product_img">
+                                <div class="product_img_div">
+                                    <img src="{{ asset('uploads/product_image/'~product.image_url) }}" class="card-img-top product_img">
+                                </div>
                                 <div class="card-body">
                                     <label class="card-title">{{ product.label }}</label>
                                     <p class="prix">{{ product.price }}</p>

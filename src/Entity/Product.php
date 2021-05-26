@@ -74,22 +74,23 @@ class Product
     private $bottle_type;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Command::class, mappedBy="historique")
-     */
-    private $commands;
-
-    /**
      * @ORM\ManyToOne(targetEntity=SousCategory::class, inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      */
     private $souscategorie;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CommandProduct::class, mappedBy="product")
+     */
+    private $commandProducts;
 
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
-        $this->commands = new ArrayCollection();
+       // $this->commands = new ArrayCollection();
+        $this->commandProducts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -231,32 +232,6 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Collection|Command[]
-     */
-    public function getCommands(): Collection
-    {
-        return $this->commands;
-    }
-
-    public function addCommand(Command $command): self
-    {
-        if (!$this->commands->contains($command)) {
-            $this->commands[] = $command;
-            $command->addHistorique($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommand(Command $command): self
-    {
-        if ($this->commands->removeElement($command)) {
-            $command->removeHistorique($this);
-        }
-
-        return $this;
-    }
 
     public function getSouscategorie(): ?SousCategory
     {
@@ -266,6 +241,36 @@ class Product
     public function setSouscategorie(?SousCategory $souscategorie): self
     {
         $this->souscategorie = $souscategorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandProduct[]
+     */
+    public function getCommandProducts(): Collection
+    {
+        return $this->commandProducts;
+    }
+
+    public function addCommandProduct(CommandProduct $commandProduct): self
+    {
+        if (!$this->commandProducts->contains($commandProduct)) {
+            $this->commandProducts[] = $commandProduct;
+            $commandProduct->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandProduct(CommandProduct $commandProduct): self
+    {
+        if ($this->commandProducts->removeElement($commandProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($commandProduct->getProduct() === $this) {
+                $commandProduct->setProduct(null);
+            }
+        }
 
         return $this;
     }

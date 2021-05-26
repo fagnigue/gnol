@@ -1,6 +1,13 @@
+{% set geolocation = app.session.get('geolocation') %}
 {% set client = app.session.get('client_info') %}
 {% set cart = app.session.get('shopping_cart') %}
 {% set total_cart = app.session.get('total_cart') %}
+{% set frais_livraison = app.session.get('deliver_price') %}
+{% set total_command = app.session.get('total_command') %}
+{% set product_list = [] %}
+{% for item in cart %}
+    {% set product_list = product_list|merge([item.label]) %}
+{% endfor %}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -70,11 +77,11 @@
                             <a href="/login"  class="i-user">Connexion</a>
                         {% endif %}
                         
-                        <a href="/panier" class="i-cart position-relative mr-lg-5">
-                            <i data-feather="shopping-cart" class="position-absolute">2</i>
-                            {% if cart %}
-                                <span class="badge badge-pill badge-warning position-absolute" style="left: 25px; bottom: 0px;">{{ cart|length }}</span>
-                            {% endif %}
+                        <a href="/panier" class="i-cart position-lg-relative mr-lg-5">
+                            <i data-feather="shopping-cart" class="position-lg-absolute">2</i>
+                            
+                                <span class="badge badge-pill badge-warning position-lg-absolute" id="badge_cart" style="left: 25px; bottom: 0px;">{{ cart|length }}</span>
+
                         </a>
                         <input type="search" style="font-family: FontAwesome;" placeholder="&#xf002; Recherche...">
                         {% if client %}<a href="/logout">Deconnexion</a>{% endif %}

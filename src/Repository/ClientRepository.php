@@ -31,6 +31,7 @@ class ClientRepository extends ServiceEntityRepository
                 client.email,
                 client.telephone,
                 client.photo,
+                client.country_id,
                 client.adresse,
                 client.info_sup,
                 client.genre
@@ -54,6 +55,7 @@ class ClientRepository extends ServiceEntityRepository
                 client.password,
                 client.email,
                 client.telephone,
+                client.country_id,
                 client.photo,
                 client.adresse,
                 client.info_sup,

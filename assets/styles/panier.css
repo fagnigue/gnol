@@ -95,4 +95,13 @@
     .title {
         font-size: x-large;
     }
+    .image,
+    .info,
+    .quantity,
+    .prix,
+    .sous-total {
+        height: 100px;
+        font-size: medium;
+        border-right: none;
+    }
 }

@@ -306,7 +306,7 @@
         width: 13.6rem;
         height: 100%;
         display: inline-block;
-        white-space: normal;
+        white-space: nowrap;
     }
     .product-div {
         width: 100%;
@@ -325,14 +325,16 @@
         display: block;
         margin: auto;
     }
-    .card-body {
-        line-height: 1;
-    }
     .prix {
-        font-size: medium;
+        font-size: small;
     }
     .card-title {
         font-size: small;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 5px;
     }
     .list_product {
         overflow-x: scroll;
@@ -357,16 +359,16 @@
         min-height: 300px;
     }
     .beer-img-1 {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
         position: absolute;
         left: 40%;
         margin-top: 10px;
         z-index: 1;
     }
     .beer-img-2 {
-        width: 250px;
-        height: 250px;
+        width: 220px;
+        height: 220px;
         position: absolute;
         left: 5%;
         margin-top: 80px;

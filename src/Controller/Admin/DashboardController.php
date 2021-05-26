@@ -6,7 +6,13 @@ use App\Entity\User;
 use App\Entity\Product;
 use App\Entity\Category;
 use App\Entity\Client;
+use App\Entity\Command;
+use App\Entity\Country;
+use App\Entity\DeliverMode;
+use App\Entity\RelayPoint;
 use App\Entity\SousCategory;
+use App\Entity\Status;
+use App\Entity\PaymentMode;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -37,7 +43,14 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('PROFIL');
         yield MenuItem::linkToCrud('Clients', 'fa fa-user', Client::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class);
-        #yield MenuItem::linkToLogout('Logout', 'fa fa-exit');
+        yield MenuItem::section('COMMAND');
+        yield MenuItem::linkToCrud('Commandes', 'fa fa-shopping-cart', Command::class);
+        yield MenuItem::section('AUTRES');
+        yield MenuItem::linkToCrud('Pays', 'fa fa-flag', Country::class);
+        yield MenuItem::linkToCrud('Point de relais', 'fa fa-map-marker-alt', RelayPoint::class);
+        yield MenuItem::linkToCrud('Statut', 'fa fa-user', Status::class);
+        yield MenuItem::linkToCrud('Mode de livraison', 'fa fa-shipping-fast', DeliverMode::class);
+        yield MenuItem::linkToCrud('Mode de paiement', 'fa fa-credit-card', PaymentMode::class);
     }
 
     public function configureDashboard(): Dashboard

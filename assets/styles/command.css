@@ -67,3 +67,10 @@
 .prix {
     color: #f8b809;
 }
+
+@media (max-width: 576px) {
+    .transparence {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

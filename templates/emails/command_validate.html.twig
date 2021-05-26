@@ -1,0 +1,163 @@
+{% set geolocation = app.session.get('geolocation') %}
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+         {{ encore_entry_link_tags('app') }}
+
+         {% block other_link %} {% endblock %}
+    </head>
+    <body>
+
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 order-lg-1 order-md-1 order-sm-0 order-0 mb-lg-0 mb-md-0 mb-sm-4 mb-5 mt-lg-0 mt-md-0 mt-sm-4 mt-5">
+
+                    <div class="panier bg-light mr-2 p-1">
+                        <div class="title_panier"><font color="#f8b809">VOTRE COMMANDE</font></div>
+                        {% for product in cart %}
+
+                            <div class="row mb-lg-3">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-4" style="height: 100px;">
+                                    <img src="{{ asset('uploads/product_image/'~product.image_url) }}" class="img_panier">
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-8 list_product">
+                                    <p>
+                                        {{ product.label }} <br>
+                                        {{ product.label_desc }} <br>
+                                    <p>
+                                    <p>
+                                        <label class="prix">
+                                            {% if geolocation.country_code == 'CI' %}
+                                                {% set price = product.sous_total * 655.85 %}
+                                                {{ price | format_currency(geolocation.currency_code, locale="CI") }}
+                                            {% else %}
+                                                {{ product.sous_total | format_currency('EUR') }}
+                                            {% endif %}
+                                        </label><br>
+                                        <label>Qte {{ product.quantity_wanted }}</label>
+                                    </p>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                        
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                
+
+                                <div class="row justify-content-lg-between justify-content-md-between justify-content-sm-around justify-content-around">
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                        <label>Total-partiel</label>
+                                    </div>
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                        <label class="prix">
+                                                {% if geolocation.country_code == 'CI' %}
+                                                    {% set price = total_cart * 655.85 %}
+                                                    {{ price | format_currency(geolocation.currency_code, locale="CI") }}
+                                                {% else %}
+                                                    {{ total_cart | format_currency('EUR') }}
+                                                {% endif %}
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-lg-between justify-content-md-between justify-content-sm-around justify-content-around">
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                        <label>Frais livraison</label>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                        <label class="prix" id="frais_livraison">
+                                            {% if geolocation.country_code == 'CI'%}
+                                                {% set price = frais_livraison * 655.85 %}
+                                                {{ price | format_currency(geolocation.currency_code, locale="CI") }}
+                                            {% else %}
+                                                {{ frais_livraison | format_currency('EUR') }}
+                                            {% endif %}
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-lg-between justify-content-md-between justify-content-sm-around justify-content-around">
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                        <label>Total</label>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                        <label class="prix" id="total_command">
+                                            {% if geolocation.country_code == 'CI'%}
+                                                {% set price = total_command * 655.85 %}
+                                                {{ price | format_currency(geolocation.currency_code, locale="CI") }}
+                                            {% else %}
+                                                {{ total_command | format_currency('EUR') }}
+                                            {% endif %}
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-lg-between justify-content-md-between justify-content-sm-around justify-content-around">
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                        <label>Mode de livraison</label>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                        <label class="prix" id="total_command">
+                                            {{ delivermode }}
+                                        </label>
+                                    </div>
+                                </div>
+
+                                {% if relaypoint %}
+                                    <div class="row justify-content-lg-between justify-content-md-between justify-content-sm-around justify-content-around">
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                            <label>Point de relais</label>
+                                        </div>
+                                        <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                            <label class="prix" id="total_command">
+                                                {{ relaypoint }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                
+
+                                <div class="row justify-content-lg-between justify-content-md-between justify-content-sm-around justify-content-around">
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                        <label>Mode de paiement</label>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                        <label class="prix" id="total_command">
+                                            {{ paymentmode }}
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="title_panier"><a href="/panier" class="panier_back">RETOUR AU PANIER</a></div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </body>
+</html>
+
+
+
+

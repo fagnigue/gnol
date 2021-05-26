@@ -87,6 +87,12 @@ class Client
      */
     private $info_sup;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Country::class, inversedBy="clients")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $country;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -281,5 +287,22 @@ class Client
         $this->info_sup = $info_sup;
 
         return $this;
+    }
+
+    public function getCountry(): ?Country
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?Country $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->firstname.' '.$this->lastname;
     }
 }

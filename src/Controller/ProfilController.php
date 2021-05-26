@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Client;
+use App\Entity\Country;
 use App\Repository\ClientRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,14 +20,15 @@ class ProfilController extends AbstractController
      */
     public function profil(Request $request, ClientRepository $clientrepository): Response
     {
-        $user_id = $request->cookies->get('gnol_user_id');
+        
+        $errorm = null;
+        $session = new Session();
+        $client = $session->get('client_info');
 
-        if ($user_id) {
-            $query = $clientrepository->getOneClientById($user_id);
-            $ArrayForSession = $query[0];
-                    $session = new Session();
-                    $session->set('client_info', $ArrayForSession);
-        }
+        $query = $clientrepository->getOneClientById(intval($client['id']));
+        $ArrayForSession = $query[0];
+        
+        $session->set('client_info', $ArrayForSession);
 
         $entityManager = $this->getDoctrine()->getManager();
 
@@ -37,35 +39,40 @@ class ProfilController extends AbstractController
             $lastname = $request->request->get('lastname');
             $firstname = $request->request->get('firstname');
             $email = $request->request->get('email');
+            $pays = $request->request->get('pays');
             $telephone = $request->request->get('telephone');
             $password = $request->request->get('password');
             $adresse = $request->request->get('adresse');
             $info_sup = $request->request->get('info_sup');
 
-            $client = $entityManager->getRepository(Client::class)->find($id);
+            $client = $entityManager->getRepository(Client::class)->find(intval($id));
+            $pays = $entityManager->getRepository(Country::class)->find(intval($pays));
 
             if (!$client) {
-                throw $this->createNotFoundException(
-                    'No client found for'
-                );
+                $errorm = "pas de client"; 
+            } else {
+
+                $client->setFirstname(strval($firstname));
+                $client->setLastname(strval($lastname));
+                $client->setEmail(strval($email));
+                $client->setTelephone(strval($telephone));
+                $client->setPassword(strval($password));
+                $client->setCountry($pays);
+                $client->setAdresse(strval($adresse));
+                $client->setInfoSup(strval($info_sup));
+                $client->setGenre(strval($genre));
+                $entityManager->flush();
+
+                return $this->redirectToRoute($request->get('_route'), $request->query->all());
+
             }
     
-            $client->setFirstname(strval($firstname));
-            $client->setLastname(strval($lastname));
-            $client->setEmail(strval($email));
-            $client->setTelephone(strval($telephone));
-            $client->setPassword(strval($password));
-            $client->setAdresse(strval($adresse));
-            $client->setInfoSup(strval($info_sup));
-            $client->setGenre(strval($genre));
-            $entityManager->flush();
-
-            return $this->redirectToRoute($request->get('_route'), $request->query->all());
+            
 
         }
 
         
 
-        return $this->render('profil.html.twig');
+        return $this->render('profil.html.twig', ['error'=>$errorm]);
     }
 }
